@@ -30,11 +30,11 @@ const values = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 sm:py-32">
+    <section id="about" className="py-20 sm:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-4xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">
+          <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">
             About WBS
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
@@ -49,7 +49,7 @@ export function AboutSection() {
         {/* Modern Values Grid with Enhanced Design */}
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 xl:grid-cols-4 mb-12">
           {values.map((value, index) => (
-            <Card key={index} className='group shadow-xs py-2'>
+            <Card key={index} className='group border-slate-200 shadow-sm py-2 rounded-2xl'>
               <CardContent className='p-8'>
                 <div className='flex flex-col items-center text-center'>
                   <CardDecorator>

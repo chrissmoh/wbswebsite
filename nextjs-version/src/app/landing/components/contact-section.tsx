@@ -79,10 +79,10 @@ export function ContactSection() {
   }
 
   return (
-    <section id="address" className="py-24 sm:py-32">
+    <section id="address" className="py-20 sm:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Adress</Badge>
+          <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Address</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Contact WBS Research Solutions Professionals
           </h2>
@@ -94,7 +94,7 @@ export function ContactSection() {
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Contact Options */}
           <div className="space-y-6 order-2 lg:order-1">
-            <Card className="hover:shadow-md transition-shadow">
+            <Card className="hover:shadow-md transition-shadow rounded-2xl border-slate-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-primary" />
@@ -111,7 +111,7 @@ export function ContactSection() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow">
+            <Card className="hover:shadow-md transition-shadow rounded-2xl border-slate-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-primary" />
@@ -128,7 +128,7 @@ export function ContactSection() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow">
+            <Card className="hover:shadow-md transition-shadow rounded-2xl border-slate-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-primary" />
@@ -151,7 +151,7 @@ export function ContactSection() {
 
           {/* Contact Form */}
           <div className="lg:col-span-2 order-1 lg:order-2">
-            <Card>
+            <Card className="rounded-2xl border-slate-200 shadow-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Mail className="h-5 w-5" />
@@ -246,7 +246,7 @@ export function ContactSection() {
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
+                    <Button type="submit" className="w-full cursor-pointer bg-[#1a4c6e] hover:bg-[#143b55]" disabled={isSubmitting}>
                       {isSubmitting ? "Submitting..." : "Send Message"}
                     </Button>
                   </form>

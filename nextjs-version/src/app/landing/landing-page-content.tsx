@@ -15,7 +15,7 @@ import { AdmissionsSection } from './components/admissions-section'
 
 export function LandingPageContent() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#f3f6f8]">
       {/* Navigation */}
       <LandingNavbar />
 

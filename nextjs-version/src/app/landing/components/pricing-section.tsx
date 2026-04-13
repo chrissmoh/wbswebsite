@@ -44,10 +44,10 @@ export function PricingSection() {
     : programs
 
   return (
-    <section id="trainings" className="py-24 sm:py-32 bg-muted/40">
+    <section id="trainings" className="py-20 sm:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
-          <Badge variant="outline" className="mb-4">Trainings And Programs</Badge>
+          <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Trainings And Programs</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             WBS Professional Trainings
           </h2>
@@ -58,10 +58,10 @@ export function PricingSection() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {displayPrograms.map((item) => (
-            <Card key={item.title}>
+            <Card key={item.title} className="rounded-2xl border-slate-200 shadow-sm">
               <CardHeader>
-                <item.icon className="text-blue-700" />
-                <CardTitle className="text-blue-700">{item.title}</CardTitle>
+                <item.icon className="text-[#2c9cd4]" />
+                <CardTitle className="text-[#1a4c6e]">{item.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">{item.detail}</p>

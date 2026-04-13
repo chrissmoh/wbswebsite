@@ -41,16 +41,16 @@ export function BlogSection() {
       ]
 
   return (
-    <section id="blog" className="py-20 sm:py-24 bg-muted/40">
+    <section id="blog" className="py-20 sm:py-24 bg-[#eef6fb]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl mb-12">
-          <Badge variant="outline" className="mb-3">Publications</Badge>
+          <Badge variant="outline" className="mb-3 border-[#2c9cd4]/40 text-[#1a4c6e]">Publications</Badge>
           <h2 className="text-4xl font-bold tracking-tight text-slate-900">Books</h2>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
           {displayItems.map((blog) => (
-            <Card key={blog.id} className="overflow-hidden py-0 border-slate-200 shadow-sm">
+            <Card key={blog.id} className="overflow-hidden py-0 border-slate-200 shadow-sm rounded-2xl">
               <CardContent className="px-0">
                 <div className="aspect-video">
                   <img

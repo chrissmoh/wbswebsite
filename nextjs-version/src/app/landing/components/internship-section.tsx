@@ -64,13 +64,13 @@ export function InternshipSection() {
   }
 
   return (
-    <section id="internship" className="py-24 sm:py-32">
+    <section id="internship" className="py-20 sm:py-24 bg-[#eef6fb]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
-          <Badge variant="outline" className="mb-4">Internship Applications</Badge>
+          <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Internship Applications</Badge>
           <h2 className="text-3xl font-bold sm:text-4xl mb-3">Apply for Internship Online</h2>
         </div>
-        <Card className="mx-auto max-w-4xl">
+        <Card className="mx-auto max-w-4xl rounded-2xl border-slate-200 shadow-sm">
           <CardHeader><CardTitle>Internship Application Form</CardTitle></CardHeader>
           <CardContent>
             <Form {...form}>
@@ -113,7 +113,7 @@ export function InternshipSection() {
                   </FormControl>
                   <p className="text-xs text-muted-foreground">Accepted: PDF, DOC, DOCX (max 5MB)</p>
                 </FormItem>
-                <Button className="bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
+                <Button className="bg-[#1a4c6e] hover:bg-[#143b55]" disabled={isSubmitting}>
                   {isSubmitting ? "Submitting..." : "Submit Internship Application"}
                 </Button>
               </form>

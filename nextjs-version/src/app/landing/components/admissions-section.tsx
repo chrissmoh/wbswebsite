@@ -49,13 +49,13 @@ export function AdmissionsSection() {
   }
 
   return (
-    <section id="admissions" className="py-24 sm:py-32 bg-muted/30">
+    <section id="admissions" className="py-20 sm:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
-          <Badge variant="outline" className="mb-4">Admissions</Badge>
+          <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Admissions</Badge>
           <h2 className="text-3xl font-bold sm:text-4xl mb-3">Program Enrollment Inquiry</h2>
         </div>
-        <Card className="mx-auto max-w-3xl">
+        <Card className="mx-auto max-w-3xl rounded-2xl border-slate-200 shadow-sm">
           <CardHeader><CardTitle>Apply for Training and Programs</CardTitle></CardHeader>
           <CardContent>
             <Form {...form}>
@@ -79,7 +79,7 @@ export function AdmissionsSection() {
                 <FormField control={form.control} name="message" render={({ field }) => (
                   <FormItem><FormLabel>Message</FormLabel><FormControl><Textarea rows={6} {...field} /></FormControl><FormMessage /></FormItem>
                 )} />
-                <Button className="bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
+                <Button className="bg-[#1a4c6e] hover:bg-[#143b55]" disabled={isSubmitting}>
                   {isSubmitting ? "Submitting..." : "Submit Admissions Inquiry"}
                 </Button>
               </form>

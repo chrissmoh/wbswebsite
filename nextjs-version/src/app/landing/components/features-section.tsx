@@ -63,11 +63,11 @@ const secondaryFeatures = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-24 sm:py-32 bg-muted/30">
+    <section id="features" className="py-20 sm:py-24 bg-[#eef6fb]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Our Services</Badge>
+          <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Our Services</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
             Complete academic and research support services
           </h2>
@@ -111,13 +111,13 @@ export function FeaturesSection() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
-              <Button size="lg" className="cursor-pointer">
+              <Button size="lg" className="cursor-pointer bg-[#1a4c6e] hover:bg-[#143b55]">
                 <a href="#address" className='flex items-center'>
                   Request Service
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="cursor-pointer border-[#1a4c6e] text-[#1a4c6e] hover:bg-[#eaf6fc]">
                 <a href="#trainings">
                   View Programs
                 </a>
@@ -154,13 +154,13 @@ export function FeaturesSection() {
             </ul>
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
-              <Button size="lg" className="cursor-pointer">
+              <Button size="lg" className="cursor-pointer bg-[#1a4c6e] hover:bg-[#143b55]">
                 <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer" className='flex items-center'>
                   Open Admin Portal
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="cursor-pointer border-[#1a4c6e] text-[#1a4c6e] hover:bg-[#eaf6fc]">
                 <a href="#blog">
                   Latest News
                 </a>
