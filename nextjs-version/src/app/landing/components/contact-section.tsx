@@ -131,6 +131,22 @@ export function ContactSection() {
             <Card className="hover:shadow-md transition-shadow rounded-2xl border-slate-200">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
+                  <MapPin className="h-5 w-5 text-primary" />
+                  DODOMA
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">P.O BOX 13713</p>
+                <p className="text-muted-foreground">Central Business Area</p>
+                <p className="text-muted-foreground">DODOMA - TANZANIA</p>
+                <p className="text-muted-foreground">info@wbs.co.tz</p>
+                <p className="text-muted-foreground">Phone number: +255 658 646358</p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-md transition-shadow rounded-2xl border-slate-200">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
                   <Phone className="h-5 w-5 text-primary" />
                   Quick Assistance
                 </CardTitle>
@@ -256,7 +272,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
           <Card>
             <CardHeader><CardTitle>Dar es Salaam Office Map</CardTitle></CardHeader>
             <CardContent>
@@ -274,6 +290,17 @@ export function ContactSection() {
               <iframe
                 title="Arusha office map"
                 src="https://www.google.com/maps?q=Njiro+Arusha&output=embed"
+                className="h-64 w-full rounded-md border"
+                loading="lazy"
+              />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader><CardTitle>Dodoma Office Map</CardTitle></CardHeader>
+            <CardContent>
+              <iframe
+                title="Dodoma office map"
+                src="https://www.google.com/maps?q=Dodoma+Tanzania&output=embed"
                 className="h-64 w-full rounded-md border"
                 loading="lazy"
               />

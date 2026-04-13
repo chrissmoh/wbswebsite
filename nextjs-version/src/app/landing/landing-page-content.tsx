@@ -12,6 +12,8 @@ import { AboutSection } from './components/about-section'
 import { Button } from '@/components/ui/button'
 import { InternshipSection } from './components/internship-section'
 import { AdmissionsSection } from './components/admissions-section'
+import { TargetAudienceSection } from './components/target-audience-section'
+import { NewsSection } from './components/news-section'
 
 export function LandingPageContent() {
   return (
@@ -23,9 +25,11 @@ export function LandingPageContent() {
       <main>
         <HeroSection />
         <AboutSection />
+        <TargetAudienceSection />
         <FeaturesSection />
         <PricingSection />
         <BlogSection />
+        <NewsSection />
         <AdmissionsSection />
         <InternshipSection />
         <ContactSection />

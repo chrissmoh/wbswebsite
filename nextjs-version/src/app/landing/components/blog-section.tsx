@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 
 type Publication = {
   id: number
@@ -68,6 +69,11 @@ export function BlogSection() {
                   </p>
                   <h3 className="text-2xl font-semibold text-slate-800">{blog.title.toUpperCase()}</h3>
                   <p className="text-muted-foreground text-sm">{blog.description ?? "WBS publication item."}</p>
+                  <div className="pt-2">
+                    <Button asChild size="sm" className="bg-[#1a4c6e] hover:bg-[#143b55]">
+                      <a href="#address">Contact to Buy</a>
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>

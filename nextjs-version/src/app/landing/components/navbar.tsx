@@ -20,6 +20,7 @@ const navigationItems = [
   { name: 'Our Services', href: '#features' },
   { name: 'Trainings And Programs', href: '#trainings' },
   { name: 'Publications', href: '#blog' },
+  { name: 'Advertisements & News', href: '#news' },
   { name: 'Admissions', href: '#admissions' },
   { name: 'Internship', href: '#internship' },
   { name: 'Visit Client', href: '/visit-client' },

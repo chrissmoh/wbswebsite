@@ -31,7 +31,7 @@ const footerLinks = {
   ],
   company: [
     { name: 'About Us', href: '#about' },
-    { name: 'Advertisements & News', href: '#blog' },
+    { name: 'Advertisements & News', href: '#news' },
     { name: 'Admissions', href: '#admissions' },
     { name: 'Internship Applications', href: '#internship' },
   ],
@@ -39,6 +39,7 @@ const footerLinks = {
     { name: 'WhatsApp Assistance', href: 'https://wa.me/255658646358' },
     { name: 'Dar es Salaam Office', href: '#address' },
     { name: 'Arusha Office', href: '#address' },
+    { name: 'Dodoma Office', href: '#address' },
     { name: 'API Health', href: 'http://127.0.0.1:8000/api/health' },
   ],
   legal: [
