@@ -27,8 +27,8 @@ export function HeroSection() {
 
           {/* Main Headline */}
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-tight">
-            WBS Research Solutions Professionals
-            <span className="block text-amber-300 italic mt-2">Professional academic consultancy and client support</span>
+            Empowering Your Academic Research Journey
+            <span className="block text-amber-300 italic mt-2">Trusted guidance for proposals, analysis, and publications</span>
           </h1>
 
           {/* Subheading */}

@@ -2,15 +2,17 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard } from 'lucide-react'
+import { LayoutDashboard, Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from '@/components/ui/navigation-menu'
 import { Logo } from '@/components/logo'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 
 const navigationItems = [
   { name: 'Home', href: '#hero' },
@@ -55,33 +57,54 @@ export function LandingNavbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-amber-300/60 bg-gradient-to-r from-slate-900 via-blue-900 to-red-800 text-white shadow-lg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        <Link href="/landing" className="flex items-center space-x-2 cursor-pointer">
-          <Logo size={38} />
-          <span className="font-semibold tracking-wide text-sm md:text-base">
-            WRITING & BUSINESS SOLUTION
-          </span>
-        </Link>
+        <div className="flex items-center gap-3">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="border-white/50 text-white hover:bg-white/10">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="bg-slate-950 text-white border-slate-700">
+              <SheetHeader>
+                <SheetTitle className="text-white">WBS Menu</SheetTitle>
+              </SheetHeader>
+              <div className="px-4 pb-6 space-y-2">
+                {navigationItems.map((item) => (
+                  <SheetClose asChild key={item.name}>
+                    <button
+                      className="w-full text-left rounded-md px-3 py-2 text-sm font-semibold hover:bg-white/10"
+                      onClick={() => handleNavigate(item.href)}
+                    >
+                      {item.name}
+                    </button>
+                  </SheetClose>
+                ))}
+                <div className="h-px bg-white/20 my-3" />
+                <SheetClose asChild>
+                  <a
+                    className="flex items-center rounded-md px-3 py-2 text-sm font-semibold hover:bg-white/10"
+                    href="http://127.0.0.1:8000/admin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <LayoutDashboard className="h-4 w-4 mr-2" />
+                    Dashboard
+                  </a>
+                </SheetClose>
+              </div>
+            </SheetContent>
+          </Sheet>
 
-        <NavigationMenu className="hidden lg:flex flex-1 justify-center">
-          <NavigationMenuList>
-            {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.name}>
-                <NavigationMenuLink
-                  className="group inline-flex h-10 w-max items-center justify-center px-3 py-2 text-sm font-semibold transition-colors hover:text-amber-200 focus:text-amber-200 focus:outline-none cursor-pointer"
-                  onClick={(e: React.MouseEvent) => {
-                    e.preventDefault()
-                    handleNavigate(item.href)
-                  }}
-                >
-                  {item.name}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+          <Link href="/landing" className="flex items-center space-x-2 cursor-pointer">
+            <Logo size={38} />
+            <span className="font-semibold tracking-wide text-sm md:text-base">
+              WRITING & BUSINESS SOLUTION
+            </span>
+          </Link>
+        </div>
 
         <div className="flex items-center space-x-2">
-          <Button variant="outline" asChild className="hidden md:inline-flex cursor-pointer border-white/50 text-white hover:bg-white/10">
+          <Button variant="outline" asChild className="hidden sm:inline-flex cursor-pointer border-white/50 text-white hover:bg-white/10">
             <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
               <LayoutDashboard className="h-4 w-4 mr-2" />
               Dashboard

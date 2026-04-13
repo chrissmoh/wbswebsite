@@ -19,12 +19,20 @@
         .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; }
         .card h3 { margin:0; font-size:13px; color:#0369a1; text-transform: uppercase; letter-spacing: .03em; }
         .card p { margin:7px 0 0; font-size:28px; font-weight:700; color:var(--deep); }
+        .mini-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:14px; }
+        .mini-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; }
+        .mini-card h4 { margin:0; font-size:12px; text-transform:uppercase; color:#64748b; letter-spacing:.03em; }
+        .mini-card p { margin:5px 0 0; font-size:22px; font-weight:700; color:var(--deep); }
         .grid { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
         .panel { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; overflow:auto; }
         .panel h3 { margin:0 0 10px; color:var(--deep); }
         table { width:100%; border-collapse: collapse; font-size:14px; }
         th, td { padding:9px; border-bottom:1px solid #e5e7eb; text-align:left; white-space:nowrap; }
         th { color:#0f172a; background:#eff6ff; }
+        .inline-form { display:flex; align-items:center; gap:6px; }
+        .inline-form select { border:1px solid #cbd5e1; border-radius:8px; padding:4px 6px; font-size:12px; }
+        .inline-form button { border:1px solid #0ea5e9; background:#0ea5e9; color:#fff; border-radius:8px; padding:4px 8px; font-size:12px; cursor:pointer; }
+        .inline-form button:hover { background:#0284c7; border-color:#0284c7; }
         .tag { display:inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
         .tag.published { background:#dcfce7; color:#166534; }
         .tag.draft { background:#fee2e2; color:#991b1b; }
@@ -60,11 +68,17 @@
             <div class="card"><h3>Office Addresses</h3><p>{{ $counts['office_addresses'] }}</p></div>
         </div>
 
+        <div class="mini-stats">
+            <div class="mini-card"><h4>Visit Client Requests</h4><p>{{ $inquiryStats['visit_client'] }}</p></div>
+            <div class="mini-card"><h4>Admissions Inquiries</h4><p>{{ $inquiryStats['admissions'] }}</p></div>
+            <div class="mini-card"><h4>Other Inquiries</h4><p>{{ $inquiryStats['other'] }}</p></div>
+        </div>
+
         <div class="grid">
             <div class="panel">
                 <h3>Latest Contact Inquiries</h3>
                 <table>
-                    <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Status</th></tr></thead>
+                    <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Status</th><th>Manage</th></tr></thead>
                     <tbody>
                         @forelse($latestInquiries as $item)
                             <tr>
@@ -72,9 +86,20 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->subject }}</td>
                                 <td>{{ $item->status ?? 'new' }}</td>
+                                <td>
+                                    <form class="inline-form" method="POST" action="{{ route('admin.inquiries.status', $item) }}">
+                                        @csrf
+                                        <select name="status">
+                                            @foreach(['new', 'in_progress', 'resolved', 'closed'] as $status)
+                                                <option value="{{ $status }}" @selected(($item->status ?? 'new') === $status)>{{ $status }}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit">Save</button>
+                                    </form>
+                                </td>
                             </tr>
                         @empty
-                            <tr><td colspan="4">No inquiries yet.</td></tr>
+                            <tr><td colspan="5">No inquiries yet.</td></tr>
                         @endforelse
                     </tbody>
                 </table>
@@ -83,23 +108,31 @@
             <div class="panel">
                 <h3>Latest Internship Applications</h3>
                 <table>
-                    <thead><tr><th>Name</th><th>University</th><th>Email</th><th>CV</th></tr></thead>
+                    <thead><tr><th>Name</th><th>University</th><th>Email</th><th>Status</th><th>Manage</th></tr></thead>
                     <tbody>
                         @forelse($latestInternships as $item)
                             <tr>
                                 <td>{{ $item->full_name }}</td>
                                 <td>{{ $item->university }}</td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->status ?? 'pending' }}</td>
                                 <td>
+                                    <form class="inline-form" method="POST" action="{{ route('admin.internships.status', $item) }}">
+                                        @csrf
+                                        <select name="status">
+                                            @foreach(['pending', 'reviewed', 'shortlisted', 'accepted', 'rejected'] as $status)
+                                                <option value="{{ $status }}" @selected(($item->status ?? 'pending') === $status)>{{ $status }}</option>
+                                            @endforeach
+                                        </select>
+                                        <button type="submit">Save</button>
+                                    </form>
                                     @if($item->cv_path)
-                                        <a href="{{ $item->cv_path }}" target="_blank" rel="noopener noreferrer">Download</a>
-                                    @else
-                                        -
+                                        <div><a href="{{ $item->cv_path }}" target="_blank" rel="noopener noreferrer">CV</a></div>
                                     @endif
                                 </td>
                             </tr>
                         @empty
-                            <tr><td colspan="4">No internship applications yet.</td></tr>
+                            <tr><td colspan="5">No internship applications yet.</td></tr>
                         @endforelse
                     </tbody>
                 </table>

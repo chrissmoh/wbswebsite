@@ -1,15 +1,30 @@
-import { LandingNavbar } from "@/app/landing/components/navbar"
-import { LandingFooter } from "@/app/landing/components/footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Search, Star } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 export default function VisitClientPage() {
   const consultationBase = process.env.NEXT_PUBLIC_LARAVEL_ASSET_URL ?? "http://127.0.0.1:8000"
 
   return (
-    <div className="min-h-screen bg-background">
-      <LandingNavbar />
+    <div className="min-h-screen bg-slate-100">
+      <header className="border-b border-amber-300/50 bg-gradient-to-r from-slate-950 via-blue-900 to-red-800 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Logo size={36} />
+            <span className="font-semibold tracking-wide">WBS Consultation</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button asChild variant="outline" className="border-white/50 bg-white/10 text-white hover:bg-white/20">
+              <a href="/landing">Back To Website</a>
+            </Button>
+            <Button asChild className="bg-amber-400 text-slate-900 hover:bg-amber-300">
+              <a href={`${consultationBase}/consultation/request`} target="_blank" rel="noopener noreferrer">Submit Request</a>
+            </Button>
+          </div>
+        </div>
+      </header>
+
       <main>
         <section className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-blue-900 to-red-800 py-16 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +77,13 @@ export default function VisitClientPage() {
           </div>
         </section>
       </main>
-      <LandingFooter />
+
+      <footer className="border-t bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-600 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p>WBS Consultation Flow Portal</p>
+          <p>For requests and tracking only</p>
+        </div>
+      </footer>
     </div>
   )
 }

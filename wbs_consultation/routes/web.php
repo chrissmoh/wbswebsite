@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', [DashboardController::class, 'index']);
+Route::post('/admin/inquiries/{inquiry}/status', [DashboardController::class, 'updateInquiryStatus'])->name('admin.inquiries.status');
+Route::post('/admin/internships/{internship}/status', [DashboardController::class, 'updateInternshipStatus'])->name('admin.internships.status');
