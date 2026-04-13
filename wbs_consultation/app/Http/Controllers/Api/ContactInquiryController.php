@@ -15,6 +15,12 @@ class ContactInquiryController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'full_name' => $request->input('full_name', $request->input('fullName')),
+            'service_type' => $request->input('service_type', $request->input('serviceType', $request->input('companyOrInstitution'))),
+            'subject' => $request->input('subject', $request->boolean('is_visit_client') ? 'Visit Client Request' : null),
+        ]);
+
         $validated = $request->validate([
             'full_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],

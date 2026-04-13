@@ -26,6 +26,9 @@ class DashboardController extends Controller
             'latestInquiries' => ContactInquiry::latest()->take(10)->get(),
             'latestInternships' => InternshipApplication::latest()->take(10)->get(),
             'latestNews' => NewsPost::latest('published_at')->take(10)->get(),
+            'latestPublications' => Publication::latest()->take(10)->get(),
+            'latestPrograms' => TrainingProgram::latest('start_date')->take(10)->get(),
+            'officeAddresses' => OfficeAddress::latest()->take(10)->get(),
         ]);
     }
 }

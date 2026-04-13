@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from 'react'
 import { BookOpen, BrainCircuit, GraduationCap, Presentation } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -12,6 +13,36 @@ const programs = [
 ]
 
 export function PricingSection() {
+  const [apiPrograms, setApiPrograms] = useState<Array<{
+    id: number
+    title: string
+    description?: string | null
+    location?: string | null
+  }>>([])
+
+  useEffect(() => {
+    const apiBase = process.env.NEXT_PUBLIC_LARAVEL_API_URL ?? "http://127.0.0.1:8000/api"
+    const load = async () => {
+      try {
+        const response = await fetch(`${apiBase}/training-programs`, { cache: "no-store" })
+        if (!response.ok) return
+        const data = await response.json()
+        setApiPrograms(Array.isArray(data) ? data : [])
+      } catch {
+        setApiPrograms([])
+      }
+    }
+    void load()
+  }, [])
+
+  const displayPrograms = apiPrograms.length > 0
+    ? apiPrograms.map((p, index) => ({
+        title: p.title,
+        detail: p.description || p.location || "WBS professional training program.",
+        icon: [BookOpen, BrainCircuit, GraduationCap, Presentation][index % 4],
+      }))
+    : programs
+
   return (
     <section id="trainings" className="py-24 sm:py-32 bg-muted/40">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +57,7 @@ export function PricingSection() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {programs.map((item) => (
+          {displayPrograms.map((item) => (
             <Card key={item.title}>
               <CardHeader>
                 <item.icon className="text-blue-700" />

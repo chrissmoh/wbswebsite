@@ -4,7 +4,6 @@ import { MessageCircle } from 'lucide-react'
 import { LandingNavbar } from './components/navbar'
 import { HeroSection } from './components/hero-section'
 import { FeaturesSection } from './components/features-section'
-import { TestimonialsSection } from './components/testimonials-section'
 import { BlogSection } from './components/blog-section'
 import { PricingSection } from './components/pricing-section'
 import { ContactSection } from './components/contact-section'
@@ -29,7 +28,6 @@ export function LandingPageContent() {
         <BlogSection />
         <AdmissionsSection />
         <InternshipSection />
-        <TestimonialsSection />
         <ContactSection />
       </main>
 
