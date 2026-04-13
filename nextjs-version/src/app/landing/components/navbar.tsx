@@ -58,12 +58,6 @@ export function LandingNavbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-sm">
-      <div className="bg-slate-50 border-b border-slate-200/70">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-8 flex items-center justify-end text-[11px] sm:text-xs text-slate-600">
-          <p>info@wbs.co.tz | +255 658 646358</p>
-        </div>
-      </div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
         <div className="flex items-center gap-3">
           <Sheet>
