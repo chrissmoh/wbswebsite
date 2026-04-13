@@ -53,7 +53,8 @@ export function AdmissionsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Admissions</Badge>
-          <h2 className="text-3xl font-bold sm:text-4xl mb-3">Program Enrollment Inquiry</h2>
+          <h2 className="text-3xl font-bold text-[#1a4c6e] sm:text-4xl mb-3">Program Enrollment Inquiry</h2>
+          <p className="text-slate-600">Submit your admission interest and the WBS team will contact you with next steps.</p>
         </div>
         <Card className="mx-auto max-w-3xl rounded-2xl border-slate-200 shadow-sm">
           <CardHeader><CardTitle>Apply for Training and Programs</CardTitle></CardHeader>

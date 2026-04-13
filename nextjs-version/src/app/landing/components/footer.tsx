@@ -27,7 +27,7 @@ const footerLinks = {
     { name: 'Our Services', href: '#features' },
     { name: 'Training & Programs', href: '#trainings' },
     { name: 'Publications', href: '#blog' },
-    { name: 'Adress', href: '#address' },
+    { name: 'Address', href: '#address' },
   ],
   company: [
     { name: 'About Us', href: '#about' },
@@ -76,8 +76,8 @@ export function LandingFooter() {
         {/* Newsletter Section */}
         <div className="mb-16">
           <div className="mx-auto max-w-2xl text-center">
-            <h3 className="text-2xl font-bold mb-4">Stay updated with WBS</h3>
-            <p className="text-muted-foreground mb-6">
+            <h3 className="text-2xl font-bold text-[#1a4c6e] mb-4">Stay updated with WBS</h3>
+            <p className="text-slate-600 mb-6">
               Receive updates on services, trainings, publications, and new announcements.
             </p>
             <Form {...form}>
@@ -98,7 +98,7 @@ export function LandingFooter() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="cursor-pointer">Subscribe</Button>
+                <Button type="submit" className="cursor-pointer bg-[#1a4c6e] hover:bg-[#143b55]">Subscribe</Button>
               </form>
             </Form>
           </div>

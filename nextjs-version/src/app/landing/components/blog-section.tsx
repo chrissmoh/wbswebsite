@@ -43,9 +43,12 @@ export function BlogSection() {
   return (
     <section id="blog" className="py-20 sm:py-24 bg-[#eef6fb]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl mb-12">
+        <div className="mx-auto max-w-5xl mb-12 text-center">
           <Badge variant="outline" className="mb-3 border-[#2c9cd4]/40 text-[#1a4c6e]">Publications</Badge>
-          <h2 className="text-4xl font-bold tracking-tight text-slate-900">Books</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1a4c6e]">Books and Publications</h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+            Explore featured WBS books and publication resources. Use contact support for purchase and guidance.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">

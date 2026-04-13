@@ -41,6 +41,7 @@ const smoothScrollTo = (targetId: string) => {
 
 export function LandingNavbar() {
   const pathname = usePathname()
+  const isVisitClient = pathname === '/visit-client'
 
   const handleNavigate = (href: string) => {
     if (href.startsWith('#')) {
@@ -55,7 +56,14 @@ export function LandingNavbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white text-slate-800 shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white shadow-sm">
+      <div className="bg-slate-50 border-b border-slate-200/70">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-8 flex items-center justify-between text-[11px] sm:text-xs text-slate-600">
+          <p>SINZA-LION, DAR ES SALAAM</p>
+          <p>info@wbs.co.tz | +255 658 646358</p>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
         <div className="flex items-center gap-3">
           <Sheet>
@@ -103,18 +111,6 @@ export function LandingNavbar() {
           </Link>
         </div>
 
-        <nav className="hidden lg:flex items-center gap-0.5">
-          {navigationItems.map((item) => (
-            <button
-              key={item.name}
-              className="rounded-md px-2.5 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#1a4c6e] transition-colors"
-              onClick={() => handleNavigate(item.href)}
-            >
-              {item.name}
-            </button>
-          ))}
-        </nav>
-
         <div className="flex items-center space-x-2">
           <Button variant="outline" asChild className="hidden sm:inline-flex cursor-pointer border-[#2c9cd4]/50 text-[#1a4c6e] hover:bg-blue-50">
             <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
@@ -126,6 +122,27 @@ export function LandingNavbar() {
             <a href="/visit-client">Visit Client</a>
           </Button>
         </div>
+      </div>
+
+      <div className="hidden lg:block border-t border-slate-200 bg-white">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-center gap-1">
+          {navigationItems.map((item) => {
+            const isActive = isVisitClient ? item.href === '/visit-client' : item.href === '#hero'
+            return (
+              <button
+                key={item.name}
+                className={`rounded-md px-3 py-2 text-sm font-semibold transition-colors ${
+                  isActive
+                    ? 'bg-blue-50 text-[#1a4c6e]'
+                    : 'text-slate-700 hover:bg-blue-50 hover:text-[#1a4c6e]'
+                }`}
+                onClick={() => handleNavigate(item.href)}
+              >
+                {item.name}
+              </button>
+            )
+          })}
+        </nav>
       </div>
     </header>
   )

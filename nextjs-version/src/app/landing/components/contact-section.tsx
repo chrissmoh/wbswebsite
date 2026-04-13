@@ -83,10 +83,10 @@ export function ContactSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
           <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Address</Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+          <h2 className="text-3xl font-bold tracking-tight text-[#1a4c6e] sm:text-4xl mb-4">
             Contact WBS Research Solutions Professionals
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-slate-600">
             Send inquiries, internship applications, and research support requests through this form.
           </p>
         </div>

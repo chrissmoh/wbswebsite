@@ -46,12 +46,12 @@ export function PricingSection() {
   return (
     <section id="trainings" className="py-20 sm:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-12">
+        <div className="mx-auto max-w-3xl text-center mb-12">
           <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Trainings And Programs</Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+          <h2 className="text-3xl font-bold tracking-tight text-[#1a4c6e] sm:text-4xl mb-4">
             WBS Professional Trainings
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-base sm:text-lg text-slate-600 mb-8 leading-relaxed">
             Practical trainings and programs designed for undergraduate, masters, PhD students, and institutions.
           </p>
         </div>

@@ -68,7 +68,8 @@ export function InternshipSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-12">
           <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Internship Applications</Badge>
-          <h2 className="text-3xl font-bold sm:text-4xl mb-3">Apply for Internship Online</h2>
+          <h2 className="text-3xl font-bold text-[#1a4c6e] sm:text-4xl mb-3">Apply for Internship Online</h2>
+          <p className="text-slate-600">Fill in your academic details and upload your CV to apply for WBS internship opportunities.</p>
         </div>
         <Card className="mx-auto max-w-4xl rounded-2xl border-slate-200 shadow-sm">
           <CardHeader><CardTitle>Internship Application Form</CardTitle></CardHeader>

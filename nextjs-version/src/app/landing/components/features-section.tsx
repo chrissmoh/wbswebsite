@@ -66,12 +66,12 @@ export function FeaturesSection() {
     <section id="features" className="py-20 sm:py-24 bg-[#eef6fb]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center mb-16">
+        <div className="mx-auto max-w-3xl text-center mb-14">
           <Badge variant="outline" className="mb-4 border-[#2c9cd4]/40 text-[#1a4c6e]">Our Services</Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+          <h2 className="text-3xl font-bold tracking-tight text-[#1a4c6e] sm:text-4xl mb-4">
             Complete academic and research support services
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
             WBS services cover research guidance, trainings, publications, admissions communication, internship opportunities, and quick assistance channels.
           </p>
         </div>
@@ -88,7 +88,7 @@ export function FeaturesSection() {
           {/* Right Content */}
           <div className="space-y-6">
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+              <h3 className="text-2xl font-semibold tracking-tight text-[#1a4c6e] text-balance sm:text-3xl">
                 Core services for academic success
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
@@ -131,7 +131,7 @@ export function FeaturesSection() {
           {/* Left Content */}
           <div className="space-y-6 order-2 lg:order-1">
             <div className="space-y-4">
-              <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
+              <h3 className="text-2xl font-semibold tracking-tight text-[#1a4c6e] text-balance sm:text-3xl">
                 Professional operations and client management
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
