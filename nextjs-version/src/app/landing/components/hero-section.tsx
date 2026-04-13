@@ -27,27 +27,27 @@ export function HeroSection() {
 
           {/* Main Headline */}
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-tight">
-            Master&apos;s research consultation visits, planned with care.
-            <span className="block text-amber-300 italic mt-2">Writing and Business Solutions (WBS)</span>
+            WBS Research Solutions Professionals
+            <span className="block text-amber-300 italic mt-2">Professional academic consultancy and client support</span>
           </h1>
 
           {/* Subheading */}
           <p className="mx-auto mb-10 max-w-2xl text-lg text-blue-100 sm:text-xl">
-            Thank you for choosing WBS. Use this site to submit your details and request support for concept note, proposal, dissertation, data analysis, and more.
+            Explore WBS services, trainings and programs, publications, admissions, internship applications, and official communication channels in one professional website.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button size="lg" className="text-base cursor-pointer bg-white text-slate-900 hover:bg-slate-100" asChild>
-              <a href="/visit-client">
-                Research consultation
+              <a href="#address">
+                Send Inquiry
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
             <Button variant="outline" size="lg" className="text-base cursor-pointer border-white/50 bg-white/10 text-white hover:bg-white/20" asChild>
-              <a href="/visit-client">
+              <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
                 <Play className="mr-2 h-4 w-4" />
-                Track my request
+                Open Admin Portal
               </a>
             </Button>
           </div>
