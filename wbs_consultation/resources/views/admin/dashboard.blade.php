@@ -48,6 +48,10 @@
         .tag.draft { background:#fee2e2; color:#991b1b; }
         .tag.activity { background:#e0f2fe; color:#075985; }
         .api { margin-top:14px; background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:10px; color:#9f1239; }
+        .quick-nav { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+        .quick-nav a { background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-size:12px; font-weight:600; color:#0f172a; text-decoration:none; }
+        .quick-nav a:hover { background:#eff6ff; color:#0369a1; }
+        .section-title { margin:0 0 8px; font-size:15px; font-weight:700; color:#0f172a; }
         a { color: #0369a1; text-decoration: none; }
         a:hover { text-decoration: underline; }
         @media (max-width: 1100px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .backend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid { grid-template-columns: 1fr; } }
@@ -61,13 +65,22 @@
                 <img src="/images/wbs-logo.svg" alt="WBS Logo">
                 <div>
                     <h1>WBS Consultation Dashboard</h1>
-                    <p class="subtitle">Full website backend: inquiries, internships, publications, trainings, news and addresses.</p>
+                    <p class="subtitle">Full website backend management for WBS (inquiries, internships, books, trainings, and activities).</p>
                 </div>
             </div>
             <div class="meta">
                 API: <strong>/api</strong> |
                 Health: <strong>/api/health</strong>
             </div>
+        </div>
+
+        <div class="quick-nav">
+            <a href="#activities">Website Activities</a>
+            <a href="#books-training">Books & Training</a>
+            <a href="#inquiries">Contact / Admissions Inquiries</a>
+            <a href="#internships">Internship Applications</a>
+            <a href="#publications">Publications List</a>
+            <a href="#programs">Training Programs List</a>
         </div>
 
         <div class="cards">
@@ -115,7 +128,8 @@
             </div>
         </div>
 
-        <div class="panel" style="margin-bottom:14px;">
+        <div id="activities" class="panel" style="margin-bottom:14px;">
+            <h2 class="section-title">Website Activities Feed</h2>
             <h3>Website Activities</h3>
             <table>
                 <thead><tr><th>Type</th><th>Title</th><th>Details</th><th>Status</th><th>Time</th></tr></thead>
@@ -135,8 +149,9 @@
             </table>
         </div>
 
-        <div class="grid" style="margin-bottom: 14px;">
+        <div id="books-training" class="grid" style="margin-bottom: 14px;">
             <div class="panel">
+                <h2 class="section-title">Books Backend Management</h2>
                 <h3>Add Book / Publication</h3>
                 <form method="POST" action="{{ route('admin.publications.store') }}" class="panel-form">
                     @csrf
@@ -153,6 +168,7 @@
             </div>
 
             <div class="panel">
+                <h2 class="section-title">Training Backend Management</h2>
                 <h3>Add Training & Program</h3>
                 <form method="POST" action="{{ route('admin.training-programs.store') }}" class="panel-form">
                     @csrf
@@ -170,7 +186,8 @@
         </div>
 
         <div class="grid">
-            <div class="panel">
+            <div id="inquiries" class="panel">
+                <h2 class="section-title">Inquiries Backend Management</h2>
                 <h3>Latest Contact Inquiries</h3>
                 <table>
                     <thead><tr><th>Name</th><th>Email</th><th>Subject</th><th>Status</th><th>Manage</th></tr></thead>
@@ -201,6 +218,7 @@
             </div>
 
             <div class="panel">
+                <h2 class="section-title">Admissions Backend Management</h2>
                 <h3>Enrollment Inquiries (Admissions)</h3>
                 <table>
                     <thead><tr><th>Name</th><th>Email</th><th>Program</th><th>Status</th></tr></thead>
@@ -219,7 +237,8 @@
                 </table>
             </div>
 
-            <div class="panel">
+            <div id="internships" class="panel">
+                <h2 class="section-title">Internship Backend Management</h2>
                 <h3>Latest Internship Applications</h3>
                 <table>
                     <thead><tr><th>Name</th><th>University</th><th>Email</th><th>Status</th><th>Manage</th></tr></thead>
@@ -252,7 +271,8 @@
                 </table>
             </div>
 
-            <div class="panel">
+            <div id="publications" class="panel">
+                <h2 class="section-title">Publications/Books List</h2>
                 <h3>Latest Publications</h3>
                 <table>
                     <thead><tr><th>Title</th><th>Author</th><th>Contact To Buy</th></tr></thead>
@@ -270,7 +290,8 @@
                 </table>
             </div>
 
-            <div class="panel">
+            <div id="programs" class="panel">
+                <h2 class="section-title">Training Programs List</h2>
                 <h3>Latest Training Programs</h3>
                 <table>
                     <thead><tr><th>Program</th><th>Dates</th><th>Location</th><th>Status</th></tr></thead>
