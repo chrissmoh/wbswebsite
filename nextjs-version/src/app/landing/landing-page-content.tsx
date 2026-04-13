@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+import { MessageCircle } from 'lucide-react'
 import { LandingNavbar } from './components/navbar'
 import { HeroSection } from './components/hero-section'
 import { LogoCarousel } from './components/logo-carousel'
@@ -16,6 +17,9 @@ import { FaqSection } from './components/faq-section'
 import { LandingFooter } from './components/footer'
 import { LandingThemeCustomizer, LandingThemeCustomizerTrigger } from './components/landing-theme-customizer'
 import { AboutSection } from './components/about-section'
+import { Button } from '@/components/ui/button'
+import { InternshipSection } from './components/internship-section'
+import { AdmissionsSection } from './components/admissions-section'
 
 export function LandingPageContent() {
   const [themeCustomizerOpen, setThemeCustomizerOpen] = React.useState(false)
@@ -34,6 +38,8 @@ export function LandingPageContent() {
         <FeaturesSection />
         <TeamSection />
         <PricingSection />
+        <AdmissionsSection />
+        <InternshipSection />
         <TestimonialsSection />
         <BlogSection />
         <FaqSection />
@@ -47,6 +53,18 @@ export function LandingPageContent() {
       {/* Theme Customizer */}
       <LandingThemeCustomizerTrigger onClick={() => setThemeCustomizerOpen(true)} />
       <LandingThemeCustomizer open={themeCustomizerOpen} onOpenChange={setThemeCustomizerOpen} />
+
+      {/* WhatsApp Quick Assistance */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button asChild size="icon" className="h-14 w-14 rounded-full bg-green-600 shadow-lg hover:bg-green-700">
+          <a
+            href="https://wa.me/255658646358?text=Hello%2C%20I%20need%20assistance%20with%20WBS%20services."
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </a>
+        </Button>
+      </div>
     </div>
   )
 }

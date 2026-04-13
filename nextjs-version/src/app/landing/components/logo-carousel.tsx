@@ -43,20 +43,13 @@ const SimpleIcon = ({ iconSlug, size = 24 }: { iconSlug: string; size?: number }
   )
 }
 
-// Tech companies data
 const techCompanies = [
-  { name: 'Shopify', id: 'shopify' },
-  { name: 'Netflix', id: 'netflix' },
-  { name: 'Spotify', id: 'spotify' },
-  { name: 'Airbnb', id: 'airbnb' },
-  { name: 'Dropbox', id: 'dropbox' },
-  { name: 'Stripe', id: 'stripe' },
-  { name: 'Google', id: 'google' },
-  { name: 'Apple', id: 'apple' },
-  { name: 'Meta', id: 'meta' },
-  { name: 'Tesla', id: 'tesla' },
-  { name: 'Salesforce', id: 'salesforce' },
-  { name: 'GitHub', id: 'github' },
+  { name: 'Undergraduates', id: 'google' },
+  { name: 'Masters Students', id: 'stripe' },
+  { name: 'PhD Students', id: 'github' },
+  { name: 'Researchers', id: 'meta' },
+  { name: 'Academics', id: 'apple' },
+  { name: 'Institutions', id: 'salesforce' },
 ] as const
 
 export function LogoCarousel() {
@@ -65,7 +58,7 @@ export function LogoCarousel() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-medium text-muted-foreground mb-8">
-            Trusted by leading companies worldwide
+            Serving target audience and institutions
           </p>
 
           {/* Logo Carousel with Fade Effect */}

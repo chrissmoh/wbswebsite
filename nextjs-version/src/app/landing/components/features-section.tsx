@@ -67,12 +67,12 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Marketplace Features</Badge>
+          <Badge variant="outline" className="mb-4">Our Services</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Everything you need to build amazing web applications
+            Complete academic and research support services
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our marketplace provides curated blocks, templates, landing pages, and admin dashboards to help you build professional applications faster than ever.
+            WBS services cover research guidance, trainings, publications, admissions communication, internship opportunities, and quick assistance channels.
           </p>
         </div>
 
@@ -112,14 +112,14 @@ export function FeaturesSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
               <Button size="lg" className="cursor-pointer">
-                <a href="https://shadcnstore.com/templates" className='flex items-center'>
-                  Browse Templates
+                <a href="#contact" className='flex items-center'>
+                  Request Service
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="https://shadcnstore.com/blocks">
-                  View Components
+                <a href="#pricing">
+                  View Programs
                 </a>
               </Button>
             </div>
@@ -155,14 +155,14 @@ export function FeaturesSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
               <Button size="lg" className="cursor-pointer">
-                <a href="#" className='flex items-center'>
-                  View Documentation
+                <a href="/dashboard" className='flex items-center'>
+                  Open Dashboard
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template" target="_blank" rel="noopener noreferrer">
-                  GitHub Repository
+                <a href="#blog">
+                  Latest News
                 </a>
               </Button>
             </div>

@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { useState } from "react"
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -16,14 +17,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { Mail, MessageCircle, Github, BookOpen } from 'lucide-react'
+import { Mail, MapPin, Phone, MessageCircle } from 'lucide-react'
 
 const contactFormSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
+  fullName: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
   }),
-  lastName: z.string().min(2, {
-    message: "Last name must be at least 2 characters.",
+  phone: z.string().min(7, {
+    message: "Phone must be at least 7 characters.",
   }),
   email: z.string().email({
     message: "Please enter a valid email address.",
@@ -31,98 +32,117 @@ const contactFormSchema = z.object({
   subject: z.string().min(5, {
     message: "Subject must be at least 5 characters.",
   }),
+  serviceType: z.string().optional(),
   message: z.string().min(10, {
     message: "Message must be at least 10 characters.",
   }),
 })
 
 export function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      fullName: "",
+      phone: "",
       email: "",
       subject: "",
+      serviceType: "",
       message: "",
     },
   })
 
-  function onSubmit(values: z.infer<typeof contactFormSchema>) {
-    // Here you would typically send the form data to your backend
-    console.log(values)
-    // You could also show a success message or redirect
-    form.reset()
+  async function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    setIsSubmitting(true)
+    try {
+      const apiBase = process.env.NEXT_PUBLIC_LARAVEL_API_URL ?? "http://127.0.0.1:8000/api"
+      const response = await fetch(`${apiBase}/contact-inquiries`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          full_name: values.fullName,
+          phone: values.phone,
+          email: values.email,
+          subject: values.subject,
+          service_type: values.serviceType,
+          message: values.message,
+        }),
+      })
+      if (!response.ok) throw new Error("Unable to submit now.")
+      form.reset()
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <section id="contact" className="py-24 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Get In Touch</Badge>
+          <Badge variant="outline" className="mb-4">Communication</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Need help or have questions?
+            Contact WBS Research Solutions Professionals
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our team is here to help you get the most out of ShadcnStore. Choose the best way to reach out to us.
+            Send inquiries, internship applications, and research support requests through this form.
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
           {/* Contact Options */}
           <div className="space-y-6 order-2 lg:order-1">
-            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <MessageCircle className="h-5 w-5 text-primary" />
-                  Discord Community
+                  <MapPin className="h-5 w-5 text-primary" />
+                  OUR OFFICE ADDRESS - DAR ES SALAAM
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-3">
-                  Join our active community for quick help and discussions with other developers.
-                </p>
-                <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="https://discord.com/invite/XEQhPc9a6p" target="_blank" rel="noopener noreferrer">
-                    Join Discord
-                  </a>
-                </Button>
+                <p className="text-muted-foreground">P.O BOX 13713</p>
+                <p className="text-muted-foreground">SINZA LION OPPOSITE SHAMOOL HOTEL</p>
+                <p className="text-muted-foreground">MASHUJAA STREET</p>
+                <p className="text-muted-foreground">DAR ES SALAAM - TANZANIA</p>
+                <p className="text-muted-foreground">info@wbs.co.tz</p>
+                <p className="text-muted-foreground">Phone number: +255 658 646358</p>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Github className="h-5 w-5 text-primary" />
-                  GitHub Issues
+                  <MapPin className="h-5 w-5 text-primary" />
+                  ARUSHA
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-3">
-                  Report bugs, request features, or contribute to our open source repository.
-                </p>
-                <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template/issues" target="_blank" rel="noopener noreferrer">
-                    View on GitHub
-                  </a>
-                </Button>
+                <p className="text-muted-foreground">P.O BOX 13713</p>
+                <p className="text-muted-foreground">TWIGA STREET</p>
+                <p className="text-muted-foreground">NJIRO, BENDERA SABA, HOUSE NUMBER 03</p>
+                <p className="text-muted-foreground">ARUSHA - TANZANIA</p>
+                <p className="text-muted-foreground">Writing.wbs@gmail.com</p>
+                <p className="text-muted-foreground">Phone number: +255 713 110 235</p>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-md transition-shadow cursor-pointer">
+            <Card className="hover:shadow-md transition-shadow">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-primary" />
-                  Documentation
+                  <Phone className="h-5 w-5 text-primary" />
+                  Quick Assistance
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Browse our comprehensive guides, tutorials, and component documentation.
+                  Click for WhatsApp quick support and admissions guidance.
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
-                  <a href="#">
-                    View Docs
+                  <a href="https://wa.me/255658646358?text=Hello%2C%20I%20need%20assistance%20with%20WBS%20services.">
+                    <MessageCircle className="h-4 w-4 mr-1" />
+                    WhatsApp Chat
                   </a>
                 </Button>
               </CardContent>
@@ -144,12 +164,12 @@ export function ContactSection() {
                     <div className="grid gap-4 sm:grid-cols-2">
                       <FormField
                         control={form.control}
-                        name="firstName"
+                        name="fullName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>First name</FormLabel>
+                            <FormLabel>Full name</FormLabel>
                             <FormControl>
-                              <Input placeholder="John" {...field} />
+                              <Input placeholder="John Doe" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -157,12 +177,12 @@ export function ContactSection() {
                       />
                       <FormField
                         control={form.control}
-                        name="lastName"
+                        name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Last name</FormLabel>
+                            <FormLabel>Phone number</FormLabel>
                             <FormControl>
-                              <Input placeholder="Doe" {...field} />
+                              <Input placeholder="+255 xxx xxx xxx" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -197,13 +217,26 @@ export function ContactSection() {
                     />
                     <FormField
                       control={form.control}
+                      name="serviceType"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Service type</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Research support, admissions, internship..." {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
                       name="message"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Message</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Tell us how we can help you with ShadcnStore components..."
+                              placeholder="Tell us how WBS can assist your research or training needs..."
                               rows={10}
                               className="min-h-50"
                               {...field}
@@ -213,14 +246,39 @@ export function ContactSection() {
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" className="w-full cursor-pointer">
-                      Send Message
+                    <Button type="submit" className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
+                      {isSubmitting ? "Submitting..." : "Send Message"}
                     </Button>
                   </form>
                 </Form>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <Card>
+            <CardHeader><CardTitle>Dar es Salaam Office Map</CardTitle></CardHeader>
+            <CardContent>
+              <iframe
+                title="Dar es Salaam office map"
+                src="https://www.google.com/maps?q=Sinza+Dar+es+Salaam&output=embed"
+                className="h-64 w-full rounded-md border"
+                loading="lazy"
+              />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader><CardTitle>Arusha Office Map</CardTitle></CardHeader>
+            <CardContent>
+              <iframe
+                title="Arusha office map"
+                src="https://www.google.com/maps?q=Njiro+Arusha&output=embed"
+                className="h-64 w-full rounded-md border"
+                loading="lazy"
+              />
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

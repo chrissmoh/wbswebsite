@@ -1,31 +1,30 @@
 "use client"
 
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { CardDecorator } from '@/components/ui/card-decorator'
-import { Github, Code, Palette, Layout, Crown } from 'lucide-react'
+import { BookOpen, GraduationCap, Building2, MessageCircle } from 'lucide-react'
 
 const values = [
   {
-    icon: Code,
-    title: 'Developer First',
-    description: 'Every component is built with the developer experience in mind, ensuring clean code and easy integration.'
+    icon: BookOpen,
+    title: 'Research Support',
+    description: 'Professional support in research proposal writing, data analysis, manuscripts, and plagiarism checking.'
   },
   {
-    icon: Palette,
-    title: 'Design Excellence',
-    description: 'We maintain the highest design standards, following shadcn/ui principles and modern UI patterns.'
+    icon: GraduationCap,
+    title: 'Training & Programs',
+    description: 'Practical training sessions for undergraduate, masters, and PhD students and academic institutions.'
   },
   {
-    icon: Layout,
-    title: 'Production Ready',
-    description: 'Battle-tested components used in real applications with proven performance and reliability across different environments.'
+    icon: Building2,
+    title: 'Institution Services',
+    description: 'Academic consultancy services for universities and institutions with professional communication channels.'
   },
   {
-    icon: Crown,
-    title: 'Premium Quality',
-    description: 'Hand-crafted with attention to detail and performance optimization, ensuring exceptional user experience and accessibility.'
+    icon: MessageCircle,
+    title: 'Quick Assistance',
+    description: 'Fast communication by phone, email, office address, and WhatsApp chat for instant support.'
   }
 ]
 
@@ -36,14 +35,14 @@ export function AboutSection() {
         {/* Section Header */}
         <div className="mx-auto max-w-4xl text-center mb-16">
           <Badge variant="outline" className="mb-4">
-            About ShadcnStore
+            About WBS
           </Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-            Built for developers, by developers
+            WBS Research Solutions Professionals
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            We&apos;re passionate about creating the best marketplace for shadcn/ui components and templates.
-            Our mission is to accelerate development and help developers build beautiful admin interfaces faster.
+            WBS is an academic consultancy firm offering high-quality research support, professional training, and publishing services.
+            The website is designed to showcase services, streamline inquiries, and build professional credibility.
           </p>
         </div>
 
@@ -64,24 +63,8 @@ export function AboutSection() {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <span className="text-muted-foreground">❤️ Made with love for the developer community</span>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="cursor-pointer" asChild>
-              <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template" target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                Star on GitHub
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" className="cursor-pointer" asChild>
-              <a href="https://discord.com/invite/XEQhPc9a6p" target="_blank" rel="noopener noreferrer">
-                Join Discord Community
-              </a>
-            </Button>
-          </div>
+        <div className="mt-12 text-center text-muted-foreground">
+          Serving students, researchers, and institutions across Tanzania.
         </div>
       </div>
     </section>

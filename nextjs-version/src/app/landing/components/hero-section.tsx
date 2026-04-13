@@ -22,38 +22,38 @@ export function HeroSection() {
           <div className="mb-8 flex justify-center">
             <Badge variant="outline" className="px-4 py-2 border-foreground">
               <Star className="w-3 h-3 mr-2 fill-current" />
-              New: Premium Template Collection
+              WBS RESEARCH SOLUTIONS PROFESSIONALS
               <ArrowRight className="w-3 h-3 ml-2" />
             </Badge>
           </div>
 
           {/* Main Headline */}
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            Build Better
+            WBS Research Solutions
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}Web Applications{" "}
+              {" "}Professional Website{" "}
             </span>
-            with Ready-Made Components
+            with Laravel Backend + Next.js Frontend
           </h1>
 
           {/* Subheading */}
           <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-            Accelerate your development with our curated collection of blocks, templates, landing pages,
-            and admin dashboards. From free components to complete solutions, built with shadcn/ui.
+            A fully responsive corporate website with pages for services, trainings, publications, admissions,
+            internship applications, advertisements, and news, connected to API-driven backend management.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button size="lg" className="text-base cursor-pointer" asChild>
-              <Link href="/auth/sign-up">
-                Get Started Free
+            <Button size="lg" className="text-base cursor-pointer bg-blue-600 hover:bg-blue-700" asChild>
+              <a href="#contact">
+                Send Inquiry
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button variant="outline" size="lg" className="text-base cursor-pointer" asChild>
-              <a href="#">
+              <a href="/dashboard">
                 <Play className="mr-2 h-4 w-4" />
-                Watch Demo
+                Open Dashboard
               </a>
             </Button>
           </div>

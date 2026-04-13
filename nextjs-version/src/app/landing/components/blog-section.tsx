@@ -9,26 +9,26 @@ const blogs = [
     {
       id: 1,
       image: 'https://ui.shadcn.com/placeholder.svg',
-      category: 'Technology',
-      title: 'AI Development Catalysts',
+      category: 'Advertisements & News',
+      title: 'Internship Applications Open',
       description:
-        'Exploring how AI-driven tools are transforming software development workflows and accelerating innovation.',
+        'Students can now apply online for internship placements in research support and academic writing.',
     },
     {
       id: 2,
       image: 'https://ui.shadcn.com/placeholder.svg',
-      category: 'Lifestyle',
-      title: 'Minimalist Living Guide',
+      category: 'Publications',
+      title: 'The Knowledge of Research Proposal',
       description:
-        'Minimalist living approaches that can help reduce stress and create more meaningful daily experiences.',
+        'Featured publication available with contact-to-buy guidance through the WBS support team.',
     },
     {
       id: 3,
       image: 'https://ui.shadcn.com/placeholder.svg',
-      category: 'Design',
-      title: 'Accessible UI Trends',
+      category: 'Training & Programs',
+      title: 'Academic Writing Workshop',
       description:
-        'How modern UI trends are embracing accessibility while maintaining sleek, intuitive user experiences.',
+        'Upcoming practical training for undergraduate, masters, and PhD students.',
     },
   ]
 
@@ -38,12 +38,12 @@ export function BlogSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Latest Insights</Badge>
+          <Badge variant="outline" className="mb-4">Advertisements & News</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            From our blog
+            Publications, news, and announcements
           </h2>
           <p className="text-lg text-muted-foreground">
-            Stay updated with the latest trends, best practices, and insights from our team of experts.
+            The backend dashboard allows posting company announcements, promotions, training updates, and publications.
           </p>
         </div>
 

@@ -5,9 +5,16 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { SidebarConfigProvider } from "@/contexts/sidebar-context";
 import { inter } from "@/lib/fonts";
 
+const assetBase = process.env.NEXT_PUBLIC_LARAVEL_ASSET_URL ?? "http://127.0.0.1:8000";
+
 export const metadata: Metadata = {
-  title: "Shadcn Dashboard",
-  description: "A dashboard built with Next.js and shadcn/ui",
+  title: "WBS Research Solutions",
+  description: "Professional academic consultancy website for WBS Research Solutions Professionals.",
+  icons: {
+    icon: `${assetBase}/images/wbs-logo.svg`,
+    shortcut: `${assetBase}/images/wbs-logo.svg`,
+    apple: `${assetBase}/images/wbs-logo.svg`,
+  },
 };
 
 export default function RootLayout({

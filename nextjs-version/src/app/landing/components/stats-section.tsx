@@ -13,27 +13,27 @@ import { DotPattern } from '@/components/dot-pattern'
 const stats = [
   {
     icon: Package,
-    value: '500+',
-    label: 'Components',
-    description: 'Ready-to-use blocks'
+    value: '9+',
+    label: 'Core Pages',
+    description: 'Home to Contact'
   },
   {
     icon: Download,
-    value: '25K+',
-    label: 'Downloads',
-    description: 'Trusted worldwide'
+    value: '4-5',
+    label: 'Weeks Timeline',
+    description: 'Planned delivery'
   },
   {
     icon: Users,
-    value: '10K+',
-    label: 'Developers',
-    description: 'Active community'
+    value: '5',
+    label: 'Target Groups',
+    description: 'Students and researchers'
   },
   {
     icon: Star,
-    value: '4.9',
-    label: 'Rating',
-    description: 'User satisfaction'
+    value: '24/7',
+    label: 'Quick Assistance',
+    description: 'WhatsApp support'
   }
 ]
 

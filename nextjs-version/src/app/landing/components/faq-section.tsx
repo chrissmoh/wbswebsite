@@ -14,39 +14,39 @@ type FaqItem = {
 const faqItems: FaqItem[] = [
   {
     value: 'item-1',
-    question: 'How do I integrate ShadcnStore components into my project?',
+    question: 'Can this website show all WBS services clearly?',
     answer:
-      'Integration is simple! All our components are built with shadcn/ui and work with React, Next.js, and Vite. Just copy the component code, install any required dependencies, and paste it into your project. Each component comes with detailed installation instructions and examples.',
+      'Yes. The website structure includes Home, About Us, Our Services, Training & Programs, Publications, Admissions, Internship Applications, Advertisements & News, and Contact pages.',
   },
   {
     value: 'item-2',
-    question: 'What\'s the difference between free and premium components?',
+    question: 'How will clients contact WBS quickly?',
     answer:
-      'Free components include essential UI elements like buttons, forms, and basic layouts. Premium components offer advanced features like complex data tables, analytics dashboards, authentication flows, and complete admin templates. Premium also includes Figma files, priority support, and commercial licenses.',
+      'Visitors can use contact forms, phone numbers, email, office addresses, and a floating WhatsApp quick-chat icon available on all pages.',
   },
   {
     value: 'item-3',
-    question: 'Can I use these components in commercial projects?',
+    question: 'Is internship application included?',
     answer:
-      'Yes! Free components come with an MIT license for unlimited use. Premium components include a commercial license that allows usage in client projects, SaaS applications, and commercial products without attribution requirements.',
+      'Yes. Students can submit internship applications online with full details and the admin dashboard receives and manages these records.',
   },
   {
     value: 'item-4',
-    question: 'Do you provide support and updates?',
+    question: 'Can admin manage news and advertisements?',
     answer:
-      'Absolutely! We provide community support for free components through our Discord server and GitHub issues. Premium subscribers get priority email support, regular component updates, and early access to new releases. We also maintain compatibility with the latest shadcn/ui versions.',
+      'Yes. The Laravel backend has API endpoints and dashboard-ready data models for adding, editing, and deleting announcements and promotions.',
   },
   {
     value: 'item-5',
-    question: 'What frameworks and tools do you support?',
+    question: 'Which technologies are used in this proposal?',
     answer:
-      'Our components work with React 18+, Next.js 13+, and Vite. We use TypeScript, Tailwind CSS, and follow shadcn/ui conventions. Components are tested with popular tools like React Hook Form, TanStack Query, and Zustand for state management.',
+      'Frontend uses Next.js, backend uses Laravel APIs, and data is stored in MySQL-compatible schema through Laravel migrations.',
   },
   {
     value: 'item-6',
-    question: 'How often do you release new components?',
+    question: 'What is the expected timeline?',
     answer:
-      'We release new components and templates weekly. Premium subscribers get early access to new releases, while free components are updated regularly based on community feedback. You can track our roadmap and request specific components through our GitHub repository.',
+      'The implementation timeline is 4-5 weeks: planning/design, frontend build, backend integration, then testing and launch.',
   },
 ]
 
@@ -61,7 +61,7 @@ const FaqSection = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-lg text-muted-foreground">
-            Everything you need to know about ShadcnStore components, licensing, and integration. Still have questions? We&apos;re here to help!
+            Key answers about the WBS website proposal, implementation stack, and communication options.
           </p>
         </div>
 
