@@ -19,6 +19,10 @@
         .card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px; }
         .card h3 { margin:0; font-size:13px; color:#0369a1; text-transform: uppercase; letter-spacing: .03em; }
         .card p { margin:7px 0 0; font-size:28px; font-weight:700; color:var(--deep); }
+        .backend-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-bottom:14px; }
+        .backend-item { background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px; }
+        .backend-item h4 { margin:0; font-size:14px; color:#0f172a; }
+        .backend-item p { margin:6px 0 0; font-size:12px; color:#64748b; }
         .mini-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:14px; }
         .mini-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px; }
         .mini-card h4 { margin:0; font-size:12px; text-transform:uppercase; color:#64748b; letter-spacing:.03em; }
@@ -46,7 +50,7 @@
         .api { margin-top:14px; background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:10px; color:#9f1239; }
         a { color: #0369a1; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        @media (max-width: 1100px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1100px) { .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .backend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid { grid-template-columns: 1fr; } }
         @media (max-width: 700px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } .top { flex-direction:column; align-items:flex-start; } }
     </style>
 </head>
@@ -79,6 +83,36 @@
             <div class="mini-card"><h4>Visit Client Requests</h4><p>{{ $inquiryStats['visit_client'] }}</p></div>
             <div class="mini-card"><h4>Admissions Inquiries</h4><p>{{ $inquiryStats['admissions'] }}</p></div>
             <div class="mini-card"><h4>Other Inquiries</h4><p>{{ $inquiryStats['other'] }}</p></div>
+        </div>
+
+        <div class="panel" style="margin-bottom:14px;">
+            <h3>Website Backend Control Center</h3>
+            <div class="backend-grid">
+                <div class="backend-item">
+                    <h4>Internship Requests ({{ $counts['internship_applications'] }})</h4>
+                    <p>Manage statuses in "Latest Internship Applications".</p>
+                </div>
+                <div class="backend-item">
+                    <h4>Enrollment Inquiries ({{ $inquiryStats['admissions'] }})</h4>
+                    <p>Review admissions-related inquiries in dedicated table.</p>
+                </div>
+                <div class="backend-item">
+                    <h4>Books / Publications ({{ $counts['publications'] }})</h4>
+                    <p>Add books from "Add Book / Publication" form.</p>
+                </div>
+                <div class="backend-item">
+                    <h4>Training & Programs ({{ $counts['training_programs'] }})</h4>
+                    <p>Add programs from "Add Training & Program" form.</p>
+                </div>
+                <div class="backend-item">
+                    <h4>Contact / Visit Client Inquiries ({{ $counts['contact_inquiries'] }})</h4>
+                    <p>Update inquiry statuses in "Latest Contact Inquiries".</p>
+                </div>
+                <div class="backend-item">
+                    <h4>News & Office Data</h4>
+                    <p>Monitor latest posts and office addresses in lower tables.</p>
+                </div>
+            </div>
         </div>
 
         <div class="panel" style="margin-bottom:14px;">
