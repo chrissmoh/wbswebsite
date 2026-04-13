@@ -185,6 +185,25 @@
             </div>
         </div>
 
+        <div class="panel" style="margin-bottom:14px;">
+            <h2 class="section-title">Advertisements & News Backend Management</h2>
+            <h3>Add News / Advertisement</h3>
+            <form method="POST" action="{{ route('admin.news-posts.store') }}" class="panel-form">
+                @csrf
+                <input type="text" name="title" placeholder="Post title" required>
+                <textarea name="body" rows="3" placeholder="Post content" required></textarea>
+                <div class="row">
+                    <select name="type" style="width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:8px 10px; font-size:13px;">
+                        <option value="news">News</option>
+                        <option value="advertisement">Advertisement</option>
+                    </select>
+                    <input type="date" name="published_at">
+                </div>
+                <label class="check"><input type="checkbox" name="is_published" value="1" checked> Publish now</label>
+                <button type="submit">Add Post</button>
+            </form>
+        </div>
+
         <div class="grid">
             <div id="inquiries" class="panel">
                 <h2 class="section-title">Inquiries Backend Management</h2>

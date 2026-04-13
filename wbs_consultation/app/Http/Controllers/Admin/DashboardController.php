@@ -110,6 +110,22 @@ class DashboardController extends Controller
         return back()->with('success', 'Training program added successfully.');
     }
 
+    public function storeNewsPost(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string'],
+            'type' => ['required', 'in:news,advertisement'],
+            'published_at' => ['nullable', 'date'],
+            'is_published' => ['nullable', 'boolean'],
+        ]);
+
+        $validated['is_published'] = $request->boolean('is_published');
+        NewsPost::create($validated);
+
+        return back()->with('success', 'News/advertisement post added successfully.');
+    }
+
     public function updateInquiryStatus(Request $request, ContactInquiry $inquiry): RedirectResponse
     {
         $validated = $request->validate([

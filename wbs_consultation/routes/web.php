@@ -12,3 +12,4 @@ Route::post('/admin/inquiries/{inquiry}/status', [DashboardController::class, 'u
 Route::post('/admin/internships/{internship}/status', [DashboardController::class, 'updateInternshipStatus'])->name('admin.internships.status');
 Route::post('/admin/publications', [DashboardController::class, 'storePublication'])->name('admin.publications.store');
 Route::post('/admin/training-programs', [DashboardController::class, 'storeTrainingProgram'])->name('admin.training-programs.store');
+Route::post('/admin/news-posts', [DashboardController::class, 'storeNewsPost'])->name('admin.news-posts.store');
