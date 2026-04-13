@@ -71,7 +71,7 @@ export function LandingFooter() {
   }
 
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t-2 border-blue-200 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Newsletter Section */}
         <div className="mb-16">
@@ -139,10 +139,7 @@ export function LandingFooter() {
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <a href={link.href} className="text-slate-600 hover:text-blue-700 transition-colors font-medium">
                     {link.name}
                   </a>
                 </li>
@@ -155,10 +152,7 @@ export function LandingFooter() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <a href={link.href} className="text-slate-600 hover:text-blue-700 transition-colors font-medium">
                     {link.name}
                   </a>
                 </li>
@@ -171,10 +165,7 @@ export function LandingFooter() {
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <a href={link.href} className="text-slate-600 hover:text-blue-700 transition-colors font-medium">
                     {link.name}
                   </a>
                 </li>
@@ -187,10 +178,7 @@ export function LandingFooter() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
+                  <a href={link.href} className="text-slate-600 hover:text-blue-700 transition-colors font-medium">
                     {link.name}
                   </a>
                 </li>
@@ -215,14 +203,14 @@ export function LandingFooter() {
             <span className="hidden sm:inline">•</span>
             <span>© {new Date().getFullYear()} WBS Research Solutions Professionals</span>
           </div>
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground mt-4 md:mt-0">
-            <a href="#privacy" className="hover:text-foreground transition-colors">
+          <div className="flex items-center space-x-4 text-sm text-slate-600 mt-4 md:mt-0">
+            <a href="#privacy" className="hover:text-blue-700 transition-colors">
               Privacy Policy
             </a>
-            <a href="#terms" className="hover:text-foreground transition-colors">
+            <a href="#terms" className="hover:text-blue-700 transition-colors">
               Terms of Service
             </a>
-            <a href="#cookies" className="hover:text-foreground transition-colors">
+            <a href="#cookies" className="hover:text-blue-700 transition-colors">
               Cookie Policy
             </a>
           </div>

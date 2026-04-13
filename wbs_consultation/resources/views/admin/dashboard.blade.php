@@ -33,6 +33,12 @@
         .inline-form select { border:1px solid #cbd5e1; border-radius:8px; padding:4px 6px; font-size:12px; }
         .inline-form button { border:1px solid #0ea5e9; background:#0ea5e9; color:#fff; border-radius:8px; padding:4px 8px; font-size:12px; cursor:pointer; }
         .inline-form button:hover { background:#0284c7; border-color:#0284c7; }
+        .panel-form { display:grid; gap:8px; }
+        .panel-form input, .panel-form textarea { width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:8px 10px; font-size:13px; }
+        .panel-form .row { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+        .panel-form .check { display:flex; align-items:center; gap:8px; font-size:13px; color:#334155; }
+        .panel-form button { border:1px solid #0ea5e9; background:#0ea5e9; color:#fff; border-radius:8px; padding:8px 10px; font-size:13px; font-weight:600; cursor:pointer; }
+        .panel-form button:hover { background:#0284c7; border-color:#0284c7; }
         .tag { display:inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
         .tag.published { background:#dcfce7; color:#166534; }
         .tag.draft { background:#fee2e2; color:#991b1b; }
@@ -74,6 +80,40 @@
             <div class="mini-card"><h4>Other Inquiries</h4><p>{{ $inquiryStats['other'] }}</p></div>
         </div>
 
+        <div class="grid" style="margin-bottom: 14px;">
+            <div class="panel">
+                <h3>Add Book / Publication</h3>
+                <form method="POST" action="{{ route('admin.publications.store') }}" class="panel-form">
+                    @csrf
+                    <input type="text" name="title" placeholder="Book title" required>
+                    <div class="row">
+                        <input type="text" name="author" placeholder="Author (optional)">
+                        <input type="text" name="contact_to_buy" placeholder="Contact to buy">
+                    </div>
+                    <input type="url" name="cover_image_url" placeholder="Cover image URL (optional)">
+                    <textarea name="description" rows="3" placeholder="Description (optional)"></textarea>
+                    <label class="check"><input type="checkbox" name="is_featured" value="1"> Mark as featured</label>
+                    <button type="submit">Add Publication</button>
+                </form>
+            </div>
+
+            <div class="panel">
+                <h3>Add Training & Program</h3>
+                <form method="POST" action="{{ route('admin.training-programs.store') }}" class="panel-form">
+                    @csrf
+                    <input type="text" name="title" placeholder="Program title" required>
+                    <textarea name="description" rows="3" placeholder="Program description"></textarea>
+                    <div class="row">
+                        <input type="date" name="start_date">
+                        <input type="date" name="end_date">
+                    </div>
+                    <input type="text" name="location" placeholder="Location (optional)">
+                    <label class="check"><input type="checkbox" name="is_active" value="1" checked> Active program</label>
+                    <button type="submit">Add Training Program</button>
+                </form>
+            </div>
+        </div>
+
         <div class="grid">
             <div class="panel">
                 <h3>Latest Contact Inquiries</h3>
@@ -100,6 +140,25 @@
                             </tr>
                         @empty
                             <tr><td colspan="5">No inquiries yet.</td></tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel">
+                <h3>Enrollment Inquiries (Admissions)</h3>
+                <table>
+                    <thead><tr><th>Name</th><th>Email</th><th>Program</th><th>Status</th></tr></thead>
+                    <tbody>
+                        @forelse($latestEnrollmentInquiries as $item)
+                            <tr>
+                                <td>{{ $item->full_name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->service_type ?? '-' }}</td>
+                                <td>{{ $item->status ?? 'new' }}</td>
+                            </tr>
+                        @empty
+                            <tr><td colspan="4">No enrollment inquiries yet.</td></tr>
                         @endforelse
                     </tbody>
                 </table>

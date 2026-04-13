@@ -32,6 +32,7 @@ class DashboardController extends Controller
                 'office_addresses' => OfficeAddress::count(),
             ],
             'latestInquiries' => ContactInquiry::latest()->take(10)->get(),
+            'latestEnrollmentInquiries' => ContactInquiry::where('subject', 'like', '%Admissions%')->latest()->take(10)->get(),
             'latestInternships' => InternshipApplication::latest()->take(10)->get(),
             'latestNews' => NewsPost::latest('published_at')->take(10)->get(),
             'latestPublications' => Publication::latest()->take(10)->get(),
@@ -39,6 +40,40 @@ class DashboardController extends Controller
             'officeAddresses' => OfficeAddress::latest()->take(10)->get(),
             'inquiryStats' => $inquiryStats,
         ]);
+    }
+
+    public function storePublication(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'author' => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'cover_image_url' => ['nullable', 'url'],
+            'contact_to_buy' => ['nullable', 'string', 'max:255'],
+            'is_featured' => ['nullable', 'boolean'],
+        ]);
+
+        $validated['is_featured'] = $request->boolean('is_featured');
+        Publication::create($validated);
+
+        return back()->with('success', 'Publication added successfully.');
+    }
+
+    public function storeTrainingProgram(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
+            'start_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date'],
+            'location' => ['nullable', 'string', 'max:255'],
+            'is_active' => ['nullable', 'boolean'],
+        ]);
+
+        $validated['is_active'] = $request->boolean('is_active');
+        TrainingProgram::create($validated);
+
+        return back()->with('success', 'Training program added successfully.');
     }
 
     public function updateInquiryStatus(Request $request, ContactInquiry $inquiry): RedirectResponse
