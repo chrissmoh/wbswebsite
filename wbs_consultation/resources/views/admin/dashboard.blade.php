@@ -9,6 +9,8 @@
         .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
         h1 { margin-bottom: 6px; }
         .subtitle { color: #4b5563; margin-bottom: 20px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { width: 52px; height: 52px; border-radius: 8px; border: 1px solid #dbeafe; }
         .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
         .card { background: #fff; border: 1px solid #dbeafe; border-radius: 10px; padding: 14px; }
         .card h3 { margin: 0; font-size: 14px; color: #2563eb; }
@@ -22,8 +24,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>WBS Consultation Admin Dashboard</h1>
-        <div class="subtitle">Laravel backend management for the full website project.</div>
+        <div class="brand">
+            <img src="/images/wbs-logo.svg" alt="WBS Logo">
+            <div>
+                <h1>WBS Consultation Admin Dashboard</h1>
+                <div class="subtitle">Laravel backend management for the full website project.</div>
+            </div>
+        </div>
 
         <div class="cards">
             <div class="card"><h3>Contact Inquiries</h3><p>{{ $counts['contact_inquiries'] }}</p></div>
@@ -74,6 +81,24 @@
                         </tr>
                     @empty
                         <tr><td colspan="5">No internship applications yet.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <h3>What Is New</h3>
+            <table>
+                <thead><tr><th>Title</th><th>Type</th><th>Published</th></tr></thead>
+                <tbody>
+                    @forelse($latestNews as $item)
+                        <tr>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ ucfirst($item->type) }}</td>
+                            <td>{{ optional($item->published_at)->format('Y-m-d') ?? '-' }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="3">No new posts yet.</td></tr>
                     @endforelse
                 </tbody>
             </table>

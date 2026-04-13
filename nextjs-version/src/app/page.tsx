@@ -7,7 +7,7 @@ export default function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/landing");
+    router.replace("/home");
   }, [router]);
 
   // Show a loading state while redirecting

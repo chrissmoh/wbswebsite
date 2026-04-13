@@ -48,8 +48,48 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/home',
-        destination: '/landing',
+        source: '/landing',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/dashboard/:path*',
+        destination: 'http://127.0.0.1:8000/admin',
+        permanent: true,
+      },
+      {
+        source: '/dashboard-2/:path*',
+        destination: 'http://127.0.0.1:8000/admin',
+        permanent: true,
+      },
+      {
+        source: '/auth/:path*',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/mail/:path*',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/tasks/:path*',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/chat/:path*',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/calendar/:path*',
+        destination: '/home',
+        permanent: true,
+      },
+      {
+        source: '/users/:path*',
+        destination: '/home',
         permanent: true,
       },
     ];
