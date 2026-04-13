@@ -27,17 +27,17 @@ export function HeroSection() {
 
           {/* Main Headline */}
           <h1 className="mb-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            WBS Research Solutions
+            WBS Research Solutions Professionals
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              {" "}Professional Website{" "}
+              {" "}Website{" "}
             </span>
-            with Laravel Backend + Next.js Frontend
+            for Academic Consultancy and Client Support
           </h1>
 
           {/* Subheading */}
           <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl">
-            A fully responsive corporate website with pages for services, trainings, publications, admissions,
-            internship applications, advertisements, and news, connected to API-driven backend management.
+            Explore WBS services, trainings and programs, publications, admissions, internship applications,
+            and client communication channels in one professional company website.
           </p>
 
           {/* CTA Buttons */}

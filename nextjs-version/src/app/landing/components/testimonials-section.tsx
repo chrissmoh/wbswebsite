@@ -1,93 +1,108 @@
 "use client"
 
-import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useState } from 'react'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import { Badge } from '@/components/ui/badge'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 
-type Testimonial = {
-  name: string
-  role: string
-  image: string
-  quote: string
-}
-
-const testimonials: Testimonial[] = [
-  {
-    name: 'Postgraduate Student',
-    role: 'Masters Candidate',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-1',
-    quote:
-      'WBS support helped me complete my research proposal and data analysis on time with clear guidance.',
-  },
-  {
-    name: 'University Researcher',
-    role: 'Academic Staff',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=male-1',
-    quote: 'The training sessions were practical and immediately useful for supervision and publication work.',
-  },
-  {
-    name: 'Internship Applicant',
-    role: 'Final Year Student',
-    image: 'https://notion-avatars.netlify.app/api/avatar?preset=female-2',
-    quote:
-      'I applied online and received quick feedback through email and WhatsApp. The process was straightforward.',
-  },
-]
+const visitClientSchema = z.object({
+  fullName: z.string().min(2),
+  email: z.string().email(),
+  phone: z.string().min(7),
+  companyOrInstitution: z.string().min(2),
+  preferredDate: z.string().min(2),
+  message: z.string().min(10),
+})
 
 export function TestimonialsSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const form = useForm<z.infer<typeof visitClientSchema>>({
+    resolver: zodResolver(visitClientSchema),
+    defaultValues: {
+      fullName: "",
+      email: "",
+      phone: "",
+      companyOrInstitution: "",
+      preferredDate: "",
+      message: "",
+    },
+  })
+
+  async function onSubmit(values: z.infer<typeof visitClientSchema>) {
+    setIsSubmitting(true)
+    try {
+      const apiBase = process.env.NEXT_PUBLIC_LARAVEL_API_URL ?? "http://127.0.0.1:8000/api"
+      await fetch(`${apiBase}/contact-inquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          full_name: values.fullName,
+          email: values.email,
+          phone: values.phone,
+          subject: "Visit Client Request",
+          service_type: values.companyOrInstitution,
+          message: `Preferred date: ${values.preferredDate}. ${values.message}`,
+        }),
+      })
+      form.reset()
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <section id="visit-client" className="py-24 sm:py-32">
       <div className="container mx-auto px-8 sm:px-6">
-        {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
           <Badge variant="outline" className="mb-4">Visit Client</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Client Visits & Feedback
+            Request a Visit from WBS
           </h2>
           <p className="text-lg text-muted-foreground">
-            Experiences from students and researchers who received WBS services and guidance.
+            Submit your visit-client request and our team will contact you with confirmation.
           </p>
         </div>
 
-        {/* Testimonials Masonry Grid */}
-        <div className="columns-1 gap-4 md:columns-2 md:gap-6 lg:columns-3 lg:gap-4">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="mb-6 break-inside-avoid shadow-none lg:mb-4">
-              <CardContent>
-                <div className="flex items-start gap-4">
-                  <Avatar className="bg-muted size-12 shrink-0">
-                    <AvatarImage
-                      alt={testimonial.name}
-                      src={testimonial.image}
-                      loading="lazy"
-                      width="120"
-                      height="120"
-                    />
-                    <AvatarFallback>
-                      {testimonial.name
-                        .split(' ')
-                        .map(n => n[0])
-                        .join('')}
-                    </AvatarFallback>
-                  </Avatar>
-
-                  <div className="min-w-0 flex-1">
-                    <a href="#" onClick={e => e.preventDefault()} className="cursor-pointer">
-                      <h3 className="font-medium hover:text-primary transition-colors">{testimonial.name}</h3>
-                    </a>
-                    <span className="text-muted-foreground block text-sm tracking-wide">
-                      {testimonial.role}
-                    </span>
-                  </div>
+        <Card className="mx-auto max-w-4xl">
+          <CardHeader><CardTitle>Visit Client Form</CardTitle></CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <FormField control={form.control} name="fullName" render={({ field }) => (
+                    <FormItem><FormLabel>Full name</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField control={form.control} name="email" render={({ field }) => (
+                    <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
                 </div>
-
-                <blockquote className="mt-4">
-                  <p className="text-sm leading-relaxed text-balance">{testimonial.quote}</p>
-                </blockquote>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <FormField control={form.control} name="phone" render={({ field }) => (
+                    <FormItem><FormLabel>Phone</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField control={form.control} name="companyOrInstitution" render={({ field }) => (
+                    <FormItem><FormLabel>Company/Institution</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                </div>
+                <FormField control={form.control} name="preferredDate" render={({ field }) => (
+                  <FormItem><FormLabel>Preferred visit date</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="message" render={({ field }) => (
+                  <FormItem><FormLabel>Message</FormLabel><FormControl><Textarea rows={5} {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <Button className="bg-blue-600 hover:bg-blue-700" disabled={isSubmitting}>
+                  {isSubmitting ? "Submitting..." : "Submit Visit Client Request"}
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
       </div>
     </section>
   )
