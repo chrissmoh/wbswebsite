@@ -43,6 +43,8 @@
 }
 
 :root {
+  --wbs-navy: #1a4c6e;
+  --wbs-sky: #2c9cd4;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
