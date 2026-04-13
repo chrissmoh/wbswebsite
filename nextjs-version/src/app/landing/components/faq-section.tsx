@@ -28,13 +28,13 @@ const faqItems: FaqItem[] = [
     value: 'item-3',
     question: 'Is internship application included?',
     answer:
-      'Yes. Students can submit internship applications online with full details and the admin dashboard receives and manages these records.',
+      'Yes. Students can submit internship applications online with full details, and the admin portal receives and manages these records.',
   },
   {
     value: 'item-4',
     question: 'Can admin manage news and advertisements?',
     answer:
-      'Yes. The Laravel backend has API endpoints and dashboard-ready data models for adding, editing, and deleting announcements and promotions.',
+      'Yes. The Laravel backend includes API endpoints and data models for adding, editing, and deleting announcements and promotions.',
   },
   {
     value: 'item-5',

@@ -18,46 +18,46 @@ import { Image3D } from '@/components/image-3d'
 const mainFeatures = [
   {
     icon: Package,
-    title: 'Curated Component Library',
-    description: 'Hand-picked blocks and templates for quality and reliability.'
+    title: 'Research Proposal Support',
+    description: 'Guidance for selecting topics, structuring chapters, and preparing strong proposals.'
   },
   {
     icon: Crown,
-    title: 'Free & Premium Options',
-    description: 'Start free, upgrade to premium collections when you need more.'
+    title: 'Academic Writing Services',
+    description: 'Support in dissertations, theses, manuscripts, proofreading, and formatting.'
   },
   {
     icon: Layout,
-    title: 'Ready-to-Use Templates',
-    description: 'Copy-paste components that just work out of the box.'
+    title: 'Publishing and Documentation',
+    description: 'Publication guidance and support including featured academic books.'
   },
   {
     icon: Zap,
-    title: 'Regular Updates',
-    description: 'New blocks and templates added weekly to keep you current.'
+    title: 'Quick Communication',
+    description: 'Fast response via form, email, phone, and WhatsApp quick assistance.'
   }
 ]
 
 const secondaryFeatures = [
   {
     icon: BarChart3,
-    title: 'Multiple Frameworks',
-    description: 'React, Next.js, and Vite compatibility for flexible development.'
+    title: 'Data Analysis',
+    description: 'Quantitative and qualitative data analysis support for academic research.'
   },
   {
     icon: Palette,
     title: 'Modern Tech Stack',
-    description: 'Built with shadcn/ui, Tailwind CSS, and TypeScript.'
+    description: 'Built with modern frontend technologies for reliability and scalability.'
   },
   {
     icon: Users,
-    title: 'Responsive Design',
-    description: 'Mobile-first components for all screen sizes and devices.'
+    title: 'Targeted Support',
+    description: 'Services for undergraduate, masters, PhD students, researchers, and institutions.'
   },
   {
     icon: Database,
-    title: 'Developer-Friendly',
-    description: 'Clean code, well-documented, easy integration and customization.'
+    title: 'Integrated Operations',
+    description: 'Forms and submissions are securely managed through the WBS backend system.'
   }
 ]
 
@@ -89,10 +89,10 @@ export function FeaturesSection() {
           <div className="space-y-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-                Components that accelerate development
+                Core services for academic success
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
-                Our curated marketplace offers premium blocks and templates designed to save time and ensure consistency across your admin projects.
+                WBS provides structured consultancy support to help clients complete quality academic work efficiently.
               </p>
             </div>
 
@@ -112,13 +112,13 @@ export function FeaturesSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
               <Button size="lg" className="cursor-pointer">
-                <a href="#contact" className='flex items-center'>
+                <a href="#address" className='flex items-center'>
                   Request Service
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="cursor-pointer">
-                <a href="#pricing">
+                <a href="#trainings">
                   View Programs
                 </a>
               </Button>
@@ -132,10 +132,10 @@ export function FeaturesSection() {
           <div className="space-y-6 order-2 lg:order-1">
             <div className="space-y-4">
               <h3 className="text-2xl font-semibold tracking-tight text-balance sm:text-3xl">
-                Built for modern development workflows
+                Professional operations and client management
               </h3>
               <p className="text-muted-foreground text-base text-pretty">
-                Every component follows best practices with TypeScript, responsive design, and clean code architecture that integrates seamlessly into your projects.
+                Training schedules, inquiries, internships, and updates are managed through a centralized backend process.
               </p>
             </div>
 
@@ -155,8 +155,8 @@ export function FeaturesSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 pe-4 pt-2">
               <Button size="lg" className="cursor-pointer">
-                <a href="/dashboard" className='flex items-center'>
-                  Open Dashboard
+                <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer" className='flex items-center'>
+                  Open Admin Portal
                   <ArrowRight className="ms-2 size-4" aria-hidden="true" />
                 </a>
               </Button>

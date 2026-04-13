@@ -25,13 +25,12 @@ const navigationItems = [
   { name: 'Home', href: '#hero' },
   { name: 'About Us', href: '#about' },
   { name: 'Our Services', href: '#features' },
-  { name: 'Training & Programs', href: '#pricing' },
-  { name: 'Admissions', href: '#admissions' },
+  { name: 'Trainings And Programs', href: '#trainings' },
   { name: 'Publications', href: '#blog' },
-  { name: 'Internship', href: '#internship' },
-  { name: 'News & Ads', href: '#blog' },
-  { name: 'FAQ', href: '#faq' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Admissions', href: '#admissions' },
+  { name: 'Intership', href: '#internship' },
+  { name: 'Visit Client', href: '#visit-client' },
+  { name: 'Adress', href: '#address' },
 ]
 
 // Smooth scroll function
@@ -52,7 +51,7 @@ export function LandingNavbar() {
   const { setTheme, theme } = useTheme()
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-blue-200/60 bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70">
+    <header className="sticky top-0 z-50 w-full border-b border-blue-300/70 bg-gradient-to-r from-blue-600 via-blue-700 to-red-600 text-white backdrop-blur-xl">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -70,7 +69,7 @@ export function LandingNavbar() {
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.name}>
                 <NavigationMenuLink
-                  className="group inline-flex h-10 w-max items-center justify-center px-4 py-2 text-sm font-medium transition-colors hover:text-blue-600 focus:text-blue-600 focus:outline-none cursor-pointer"
+                  className="group inline-flex h-10 w-max items-center justify-center px-3 py-2 text-sm font-medium transition-colors hover:text-red-200 focus:text-red-200 focus:outline-none cursor-pointer"
                   onClick={(e: React.MouseEvent) => {
                     e.preventDefault()
                     if (item.href.startsWith('#')) {
@@ -90,17 +89,17 @@ export function LandingNavbar() {
         {/* Desktop CTA */}
         <div className="hidden xl:flex items-center space-x-2">
           <ModeToggle variant="ghost" />
-          <Button variant="outline" asChild className="cursor-pointer border-blue-300 text-blue-700 hover:bg-blue-50">
-            <Link href="/dashboard" target="_blank" rel="noopener noreferrer">
+          <Button variant="outline" asChild className="cursor-pointer border-white/60 text-white hover:bg-white/10">
+            <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
               <LayoutDashboard className="h-4 w-4 mr-2" />
-              Admin Dashboard
-            </Link>
+              Admin Portal
+            </a>
           </Button>
-          <Button asChild className="cursor-pointer bg-blue-600 hover:bg-blue-700">
-            <a href="#contact">Get Consultation</a>
+          <Button asChild className="cursor-pointer bg-white text-blue-700 hover:bg-blue-100">
+            <a href="#address">Adress</a>
           </Button>
           <Button variant="secondary" asChild className="cursor-pointer bg-red-100 text-red-700 hover:bg-red-200">
-            <a href="#blog">Latest News</a>
+            <a href="#visit-client">Visit Client</a>
           </Button>
         </div>
 
@@ -167,13 +166,13 @@ export function LandingNavbar() {
                 {/* Primary Actions */}
                 <div className="space-y-3">
                   <Button variant="outline" size="lg" asChild className="w-full cursor-pointer">
-                    <Link href="/dashboard">
+                    <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
                       <LayoutDashboard className="size-4" />
-                      Admin Dashboard
-                    </Link>
+                      Admin Portal
+                    </a>
                   </Button>
                   <Button asChild size="lg" className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700" >
-                    <a href="#contact">Get Consultation</a>
+                    <a href="#address">Adress</a>
                   </Button>
                 </div>
               </div>

@@ -36,13 +36,13 @@ const testimonials: Testimonial[] = [
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-24 sm:py-32">
+    <section id="visit-client" className="py-24 sm:py-32">
       <div className="container mx-auto px-8 sm:px-6">
         {/* Section Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Testimonials</Badge>
+          <Badge variant="outline" className="mb-4">Visit Client</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Client Feedback
+            Client Visits & Feedback
           </h2>
           <p className="text-lg text-muted-foreground">
             Experiences from students and researchers who received WBS services and guidance.

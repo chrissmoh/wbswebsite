@@ -25,20 +25,20 @@ const newsletterSchema = z.object({
 const footerLinks = {
   product: [
     { name: 'Our Services', href: '#features' },
-    { name: 'Training & Programs', href: '#pricing' },
+    { name: 'Training & Programs', href: '#trainings' },
     { name: 'Publications', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Adress', href: '#address' },
   ],
   company: [
     { name: 'About Us', href: '#about' },
     { name: 'Advertisements & News', href: '#blog' },
-    { name: 'Admissions', href: '#contact' },
-    { name: 'Internship Applications', href: '#contact' },
+    { name: 'Admissions', href: '#admissions' },
+    { name: 'Internship Applications', href: '#internship' },
   ],
   resources: [
     { name: 'WhatsApp Assistance', href: 'https://wa.me/255658646358' },
-    { name: 'Dar es Salaam Office', href: '#contact' },
-    { name: 'Arusha Office', href: '#contact' },
+    { name: 'Dar es Salaam Office', href: '#address' },
+    { name: 'Arusha Office', href: '#address' },
     { name: 'API Health', href: 'http://127.0.0.1:8000/api/health' },
   ],
   legal: [

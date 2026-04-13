@@ -1,7 +1,5 @@
 "use client"
 
-import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight, Play, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -45,63 +43,32 @@ export function HeroSection() {
           {/* CTA Buttons */}
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button size="lg" className="text-base cursor-pointer bg-blue-600 hover:bg-blue-700" asChild>
-              <a href="#contact">
+              <a href="#address">
                 Send Inquiry
                 <ArrowRight className="ml-2 h-4 w-4" />
               </a>
             </Button>
             <Button variant="outline" size="lg" className="text-base cursor-pointer" asChild>
-              <a href="/dashboard">
+              <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
                 <Play className="mr-2 h-4 w-4" />
-                Open Dashboard
+                Open Admin Portal
               </a>
             </Button>
           </div>
         </div>
 
-        {/* Hero Image/Visual */}
-        <div className="mx-auto mt-20 max-w-6xl">
-          <div className="relative group">
-            {/* Top background glow effect - positioned above the image */}
-            <div className="absolute top-2 lg:-top-8 left-1/2 transform -translate-x-1/2 w-[90%] mx-auto h-24 lg:h-80 bg-primary/50 rounded-full blur-3xl"></div>
-
-            <div className="relative rounded-xl border bg-card shadow-2xl">
-              {/* Light mode dashboard image */}
-              <Image
-                src="/dashboard-light.png"
-                alt="Dashboard Preview - Light Mode"
-                width={1200}
-                height={800}
-                className="w-full rounded-xl object-cover block dark:hidden"
-                priority
-              />
-
-              {/* Dark mode dashboard image */}
-              <Image
-                src="/dashboard-dark.png"
-                alt="Dashboard Preview - Dark Mode"
-                width={1200}
-                height={800}
-                className="w-full rounded-xl object-cover hidden dark:block"
-                priority
-              />
-
-              {/* Bottom fade effect - gradient overlay that fades the image to background */}
-              <div className="absolute bottom-0 left-0 w-full h-32 md:h-40 lg:h-48 bg-gradient-to-b from-background/0 via-background/70 to-background rounded-b-xl"></div>
-
-              {/* Overlay play button for demo */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Button
-                  size="lg"
-                  className="rounded-full h-16 w-16 p-0 cursor-pointer hover:scale-105 transition-transform"
-                  asChild
-                >
-                  <a href="#" aria-label="Watch demo video">
-                    <Play className="h-6 w-6 fill-current" />
-                  </a>
-                </Button>
-              </div>
-            </div>
+        <div className="mx-auto mt-16 grid max-w-5xl gap-4 sm:grid-cols-3">
+          <div className="rounded-lg border bg-card p-5 text-center">
+            <p className="text-sm font-semibold text-blue-700">Research Support</p>
+            <p className="text-sm text-muted-foreground">Proposal writing, data analysis, editing, and plagiarism checks.</p>
+          </div>
+          <div className="rounded-lg border bg-card p-5 text-center">
+            <p className="text-sm font-semibold text-blue-700">Training Programs</p>
+            <p className="text-sm text-muted-foreground">Workshops and professional academic development programs.</p>
+          </div>
+          <div className="rounded-lg border bg-card p-5 text-center">
+            <p className="text-sm font-semibold text-blue-700">Publications & News</p>
+            <p className="text-sm text-muted-foreground">Books, updates, announcements, and internship opportunities.</p>
           </div>
         </div>
       </div>

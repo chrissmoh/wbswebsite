@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 const blogs = [
     {
       id: 1,
-      image: 'https://ui.shadcn.com/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
       category: 'Advertisements & News',
       title: 'Internship Applications Open',
       description:
@@ -16,7 +16,7 @@ const blogs = [
     },
     {
       id: 2,
-      image: 'https://ui.shadcn.com/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1200&auto=format&fit=crop',
       category: 'Publications',
       title: 'The Knowledge of Research Proposal',
       description:
@@ -24,7 +24,7 @@ const blogs = [
     },
     {
       id: 3,
-      image: 'https://ui.shadcn.com/placeholder.svg',
+      image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop',
       category: 'Training & Programs',
       title: 'Academic Writing Workshop',
       description:
@@ -43,7 +43,7 @@ export function BlogSection() {
             Publications, news, and announcements
           </h2>
           <p className="text-lg text-muted-foreground">
-            The backend dashboard allows posting company announcements, promotions, training updates, and publications.
+            Company administrators can publish announcements, promotions, training updates, and publications from the WBS management portal.
           </p>
         </div>
 

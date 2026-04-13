@@ -1,29 +1,20 @@
 "use client"
 
-import React from 'react'
 import { MessageCircle } from 'lucide-react'
 import { LandingNavbar } from './components/navbar'
 import { HeroSection } from './components/hero-section'
-import { LogoCarousel } from './components/logo-carousel'
-import { StatsSection } from './components/stats-section'
 import { FeaturesSection } from './components/features-section'
-import { TeamSection } from './components/team-section'
 import { TestimonialsSection } from './components/testimonials-section'
 import { BlogSection } from './components/blog-section'
 import { PricingSection } from './components/pricing-section'
-import { CTASection } from './components/cta-section'
 import { ContactSection } from './components/contact-section'
-import { FaqSection } from './components/faq-section'
 import { LandingFooter } from './components/footer'
-import { LandingThemeCustomizer, LandingThemeCustomizerTrigger } from './components/landing-theme-customizer'
 import { AboutSection } from './components/about-section'
 import { Button } from '@/components/ui/button'
 import { InternshipSection } from './components/internship-section'
 import { AdmissionsSection } from './components/admissions-section'
 
 export function LandingPageContent() {
-  const [themeCustomizerOpen, setThemeCustomizerOpen] = React.useState(false)
-
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -32,27 +23,18 @@ export function LandingPageContent() {
       {/* Main Content */}
       <main>
         <HeroSection />
-        <LogoCarousel />
-        <StatsSection />
         <AboutSection />
         <FeaturesSection />
-        <TeamSection />
         <PricingSection />
+        <BlogSection />
         <AdmissionsSection />
         <InternshipSection />
         <TestimonialsSection />
-        <BlogSection />
-        <FaqSection />
-        <CTASection />
         <ContactSection />
       </main>
 
       {/* Footer */}
       <LandingFooter />
-
-      {/* Theme Customizer */}
-      <LandingThemeCustomizerTrigger onClick={() => setThemeCustomizerOpen(true)} />
-      <LandingThemeCustomizer open={themeCustomizerOpen} onOpenChange={setThemeCustomizerOpen} />
 
       {/* WhatsApp Quick Assistance */}
       <div className="fixed bottom-6 right-6 z-50">
