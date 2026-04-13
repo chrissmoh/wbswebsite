@@ -14,8 +14,12 @@ import { Textarea } from "@/components/ui/textarea"
 const visitClientSchema = z.object({
   fullName: z.string().min(2),
   email: z.string().email(),
-  phone: z.string().min(7),
-  companyOrInstitution: z.string().min(2),
+  mastersProgram: z.string().min(2),
+  phone: z.string().min(7).optional(),
+  region: z.string().min(2),
+  district: z.string().min(2),
+  exactLocation: z.string().min(5),
+  researchArea: z.string().min(2),
   preferredDate: z.string().min(2),
   message: z.string().min(10),
 })
@@ -28,8 +32,12 @@ export function TestimonialsSection() {
     defaultValues: {
       fullName: "",
       email: "",
+      mastersProgram: "",
       phone: "",
-      companyOrInstitution: "",
+      region: "",
+      district: "",
+      exactLocation: "",
+      researchArea: "",
       preferredDate: "",
       message: "",
     },
@@ -46,10 +54,10 @@ export function TestimonialsSection() {
         body: JSON.stringify({
           full_name: values.fullName,
           email: values.email,
-          phone: values.phone,
+          phone: values.phone ?? "",
           subject: "Visit Client Request",
-          service_type: values.companyOrInstitution,
-          message: `Preferred date: ${values.preferredDate}. ${values.message}`,
+          service_type: values.mastersProgram,
+          message: `Research area: ${values.researchArea}. Region: ${values.region}, District: ${values.district}. Exact location: ${values.exactLocation}. Preferred date: ${values.preferredDate}. ${values.message}`,
         }),
       })
       if (!response.ok) throw new Error("Unable to submit")
@@ -63,26 +71,38 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section id="visit-client" className="py-16 sm:py-20 bg-slate-50">
+    <section id="visit-client" className="py-14 sm:py-16 bg-slate-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-5xl rounded-2xl bg-gradient-to-r from-sky-700 via-sky-600 to-blue-700 text-white p-8 sm:p-10 mb-10 shadow-lg">
-          <p className="text-sm uppercase tracking-widest text-blue-100">WBS Consultation</p>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-2">Visit Client Request</h2>
+        <div className="mx-auto max-w-5xl rounded-2xl bg-gradient-to-r from-slate-900 via-blue-900 to-red-800 text-white p-8 sm:p-10 mb-8 shadow-lg border border-amber-300/40">
+          <p className="text-sm uppercase tracking-widest text-amber-100">Professional Research Consultation</p>
+          <h2 className="text-3xl sm:text-5xl font-bold mt-2 leading-tight">Master&apos;s research consultation visits, planned with care.</h2>
           <p className="mt-3 text-blue-50 max-w-2xl">
-            Fill this form and our team will contact you to confirm your preferred visit schedule.
+            Thank you for choosing WBS. This form collects your details so we can schedule a physical visit for concept note, proposal, dissertation, data analysis, and related research consultation.
           </p>
         </div>
 
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Visit Client</Badge>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">Request a Visit from WBS</h2>
-          <p className="text-lg text-muted-foreground">
-            Submit your visit-client request and our team will contact you with confirmation.
-          </p>
+        <div className="mx-auto max-w-4xl mb-8">
+          <div className="grid grid-cols-3 gap-3 text-center">
+            <div className="rounded-lg border bg-white p-3">
+              <div className="mx-auto mb-2 h-10 w-10 rounded-full bg-amber-400 text-slate-900 flex items-center justify-center font-bold">1</div>
+              <p className="text-xs font-semibold text-slate-700">YOUR PROFILE</p>
+            </div>
+            <div className="rounded-lg border bg-white p-3">
+              <div className="mx-auto mb-2 h-10 w-10 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">2</div>
+              <p className="text-xs font-semibold text-slate-700">RESEARCH</p>
+            </div>
+            <div className="rounded-lg border bg-white p-3">
+              <div className="mx-auto mb-2 h-10 w-10 rounded-full bg-slate-200 text-slate-700 flex items-center justify-center font-bold">3</div>
+              <p className="text-xs font-semibold text-slate-700">SCHEDULE</p>
+            </div>
+          </div>
         </div>
 
         <Card className="mx-auto max-w-4xl border-blue-100 shadow-md">
-          <CardHeader><CardTitle>Visit Client Form</CardTitle></CardHeader>
+          <CardHeader>
+            <Badge variant="outline" className="w-fit mb-3">Visit Client</Badge>
+            <CardTitle>Your Profile</CardTitle>
+          </CardHeader>
           <CardContent>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -95,13 +115,27 @@ export function TestimonialsSection() {
                   )} />
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <FormField control={form.control} name="phone" render={({ field }) => (
-                    <FormItem><FormLabel>Phone</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormField control={form.control} name="mastersProgram" render={({ field }) => (
+                    <FormItem><FormLabel>Master&apos;s Program</FormLabel><FormControl><Input placeholder="e.g. Master of Business Administration" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
-                  <FormField control={form.control} name="companyOrInstitution" render={({ field }) => (
-                    <FormItem><FormLabel>Company/Institution</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                  <FormField control={form.control} name="phone" render={({ field }) => (
+                    <FormItem><FormLabel>Phone Number (WhatsApp preferred)</FormLabel><FormControl><Input placeholder="+255 712 345 678" {...field} /></FormControl><FormMessage /></FormItem>
                   )} />
                 </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <FormField control={form.control} name="region" render={({ field }) => (
+                    <FormItem><FormLabel>Region</FormLabel><FormControl><Input placeholder="Dar es Salaam" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                  <FormField control={form.control} name="district" render={({ field }) => (
+                    <FormItem><FormLabel>District</FormLabel><FormControl><Input placeholder="Kinondoni" {...field} /></FormControl><FormMessage /></FormItem>
+                  )} />
+                </div>
+                <FormField control={form.control} name="exactLocation" render={({ field }) => (
+                  <FormItem><FormLabel>Exact Location Description (Nearby Landmark)</FormLabel><FormControl><Textarea rows={3} placeholder="Provide nearby landmark or exact location" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+                <FormField control={form.control} name="researchArea" render={({ field }) => (
+                  <FormItem><FormLabel>Research Area</FormLabel><FormControl><Input placeholder="Concept Note, Proposal, Dissertation..." {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
                 <FormField control={form.control} name="preferredDate" render={({ field }) => (
                   <FormItem><FormLabel>Preferred visit date</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>
                 )} />

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { LayoutDashboard } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -18,9 +19,9 @@ const navigationItems = [
   { name: 'Trainings And Programs', href: '#trainings' },
   { name: 'Publications', href: '#blog' },
   { name: 'Admissions', href: '#admissions' },
-  { name: 'Intership', href: '#internship' },
+  { name: 'Internship', href: '#internship' },
   { name: 'Visit Client', href: '/visit-client' },
-  { name: 'Adress', href: '#address' },
+  { name: 'Address', href: '#address' },
 ]
 
 // Smooth scroll function
@@ -37,48 +38,39 @@ const smoothScrollTo = (targetId: string) => {
 }
 
 export function LandingNavbar() {
+  const pathname = usePathname()
+
+  const handleNavigate = (href: string) => {
+    if (href.startsWith('#')) {
+      if (pathname === '/landing') {
+        smoothScrollTo(href)
+      } else {
+        window.location.href = `/landing${href}`
+      }
+      return
+    }
+    window.location.href = href
+  }
+
   return (
-    <header className="sticky top-0 z-50 w-full shadow-sm">
-      <div className="bg-red-700 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between text-xs sm:text-sm font-medium">
-          <p>SINZA-LION, DAR ES SALAAM</p>
-          <p>Mail Us Today: info@wbs.co.tz</p>
-        </div>
-      </div>
+    <header className="sticky top-0 z-50 w-full border-b border-amber-300/60 bg-gradient-to-r from-slate-900 via-blue-900 to-red-800 text-white shadow-lg">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <Link href="/landing" className="flex items-center space-x-2 cursor-pointer">
+          <Logo size={38} />
+          <span className="font-semibold tracking-wide text-sm md:text-base">
+            WRITING & BUSINESS SOLUTION
+          </span>
+        </Link>
 
-      <div className="bg-white border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <Link href="#hero" className="flex items-center space-x-2 cursor-pointer">
-            <Logo size={56} />
-            <span className="font-bold text-slate-800">
-              WRITING & BUSINESS SOLUTION
-            </span>
-          </Link>
-
-          <Button variant="outline" asChild className="cursor-pointer border-blue-300 text-blue-700 hover:bg-blue-50">
-            <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
-              <LayoutDashboard className="h-4 w-4 mr-2" />
-              WBS Dashboard
-            </a>
-          </Button>
-        </div>
-      </div>
-
-      <div className="bg-sky-600 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between gap-3">
-          <NavigationMenu className="flex-1 overflow-x-auto">
+        <NavigationMenu className="hidden lg:flex flex-1 justify-center">
           <NavigationMenuList>
             {navigationItems.map((item) => (
               <NavigationMenuItem key={item.name}>
                 <NavigationMenuLink
-                  className="group inline-flex h-10 w-max items-center justify-center px-3 py-2 text-base font-semibold transition-colors hover:text-amber-200 focus:text-amber-200 focus:outline-none cursor-pointer"
+                  className="group inline-flex h-10 w-max items-center justify-center px-3 py-2 text-sm font-semibold transition-colors hover:text-amber-200 focus:text-amber-200 focus:outline-none cursor-pointer"
                   onClick={(e: React.MouseEvent) => {
                     e.preventDefault()
-                    if (item.href.startsWith('#')) {
-                      smoothScrollTo(item.href)
-                    } else {
-                      window.location.href = item.href
-                    }
+                    handleNavigate(item.href)
                   }}
                 >
                   {item.name}
@@ -88,12 +80,17 @@ export function LandingNavbar() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <div className="hidden lg:flex items-center space-x-2">
-          <Button asChild className="cursor-pointer bg-white text-blue-700 hover:bg-blue-100">
+        <div className="flex items-center space-x-2">
+          <Button variant="outline" asChild className="hidden md:inline-flex cursor-pointer border-white/50 text-white hover:bg-white/10">
+            <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
+              <LayoutDashboard className="h-4 w-4 mr-2" />
+              Dashboard
+            </a>
+          </Button>
+          <Button asChild className="cursor-pointer bg-amber-400 text-slate-900 hover:bg-amber-300">
             <a href="/visit-client">Visit Client</a>
           </Button>
         </div>
-      </div>
       </div>
     </header>
   )
