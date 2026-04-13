@@ -22,6 +22,39 @@ class DashboardController extends Controller
             'other' => ContactInquiry::whereNotIn('subject', ['Visit Client Request', 'Admissions Inquiry'])->count(),
         ];
 
+        $activityFeed = collect()
+            ->merge(ContactInquiry::latest()->take(8)->get()->map(fn ($item) => [
+                'type' => 'Inquiry',
+                'title' => $item->subject ?? 'Contact Inquiry',
+                'detail' => $item->full_name.' ('.$item->email.')',
+                'status' => $item->status ?? 'new',
+                'time' => $item->created_at,
+            ]))
+            ->merge(InternshipApplication::latest()->take(8)->get()->map(fn ($item) => [
+                'type' => 'Internship',
+                'title' => 'Internship Application',
+                'detail' => $item->full_name.' - '.$item->university,
+                'status' => $item->status ?? 'pending',
+                'time' => $item->created_at,
+            ]))
+            ->merge(Publication::latest()->take(6)->get()->map(fn ($item) => [
+                'type' => 'Book',
+                'title' => $item->title,
+                'detail' => $item->author ?? 'No author',
+                'status' => $item->is_featured ? 'featured' : 'normal',
+                'time' => $item->created_at,
+            ]))
+            ->merge(TrainingProgram::latest()->take(6)->get()->map(fn ($item) => [
+                'type' => 'Training',
+                'title' => $item->title,
+                'detail' => $item->location ?? 'No location',
+                'status' => $item->is_active ? 'active' : 'inactive',
+                'time' => $item->created_at,
+            ]))
+            ->sortByDesc('time')
+            ->take(15)
+            ->values();
+
         return view('admin.dashboard', [
             'counts' => [
                 'contact_inquiries' => ContactInquiry::count(),
@@ -39,6 +72,7 @@ class DashboardController extends Controller
             'latestPrograms' => TrainingProgram::latest('start_date')->take(10)->get(),
             'officeAddresses' => OfficeAddress::latest()->take(10)->get(),
             'inquiryStats' => $inquiryStats,
+            'activityFeed' => $activityFeed,
         ]);
     }
 

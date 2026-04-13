@@ -42,6 +42,7 @@
         .tag { display:inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
         .tag.published { background:#dcfce7; color:#166534; }
         .tag.draft { background:#fee2e2; color:#991b1b; }
+        .tag.activity { background:#e0f2fe; color:#075985; }
         .api { margin-top:14px; background:#fff1f2; border:1px solid #fecdd3; padding:12px; border-radius:10px; color:#9f1239; }
         a { color: #0369a1; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -78,6 +79,26 @@
             <div class="mini-card"><h4>Visit Client Requests</h4><p>{{ $inquiryStats['visit_client'] }}</p></div>
             <div class="mini-card"><h4>Admissions Inquiries</h4><p>{{ $inquiryStats['admissions'] }}</p></div>
             <div class="mini-card"><h4>Other Inquiries</h4><p>{{ $inquiryStats['other'] }}</p></div>
+        </div>
+
+        <div class="panel" style="margin-bottom:14px;">
+            <h3>Website Activities</h3>
+            <table>
+                <thead><tr><th>Type</th><th>Title</th><th>Details</th><th>Status</th><th>Time</th></tr></thead>
+                <tbody>
+                    @forelse($activityFeed as $item)
+                        <tr>
+                            <td><span class="tag activity">{{ $item['type'] }}</span></td>
+                            <td>{{ $item['title'] }}</td>
+                            <td>{{ $item['detail'] }}</td>
+                            <td>{{ $item['status'] }}</td>
+                            <td>{{ optional($item['time'])->format('Y-m-d H:i') }}</td>
+                        </tr>
+                    @empty
+                        <tr><td colspan="5">No website activities yet.</td></tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
 
         <div class="grid" style="margin-bottom: 14px;">
