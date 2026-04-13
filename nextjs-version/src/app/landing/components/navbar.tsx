@@ -55,8 +55,8 @@ export function LandingNavbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 text-slate-800 shadow-sm backdrop-blur">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white text-slate-800 shadow-sm">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
         <div className="flex items-center gap-3">
           <Sheet>
             <SheetTrigger asChild>
@@ -97,17 +97,17 @@ export function LandingNavbar() {
 
           <Link href="/landing" className="flex items-center space-x-2 cursor-pointer">
             <Logo size={38} />
-            <span className="font-semibold tracking-wide text-sm md:text-base text-slate-800">
+            <span className="font-bold tracking-tight text-sm md:text-base text-[#1a4c6e]">
               WRITING & BUSINESS SOLUTION
             </span>
           </Link>
         </div>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5">
           {navigationItems.map((item) => (
             <button
               key={item.name}
-              className="rounded-md px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+              className="rounded-md px-2.5 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#1a4c6e] transition-colors"
               onClick={() => handleNavigate(item.href)}
             >
               {item.name}
@@ -116,13 +116,13 @@ export function LandingNavbar() {
         </nav>
 
         <div className="flex items-center space-x-2">
-          <Button variant="outline" asChild className="hidden sm:inline-flex cursor-pointer border-blue-300 text-blue-700 hover:bg-blue-50">
+          <Button variant="outline" asChild className="hidden sm:inline-flex cursor-pointer border-[#2c9cd4]/50 text-[#1a4c6e] hover:bg-blue-50">
             <a href="http://127.0.0.1:8000/admin" target="_blank" rel="noopener noreferrer">
               <LayoutDashboard className="h-4 w-4 mr-2" />
               Dashboard
             </a>
           </Button>
-          <Button asChild className="cursor-pointer bg-blue-700 text-white font-semibold hover:bg-blue-800">
+          <Button asChild className="cursor-pointer bg-[#1a4c6e] text-white font-semibold hover:bg-[#153e5a]">
             <a href="/visit-client">Visit Client</a>
           </Button>
         </div>
